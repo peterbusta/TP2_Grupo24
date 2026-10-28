@@ -12,14 +12,14 @@ h1, h2, h3, .offcanvas-title {
   font-family: 'Montserrat', sans-serif;
 }
 
-/* Separación visual de la Sidebar */
+/* Separación visual de la sidebar */
 .sidebar-devopoly {
   background-color: #0b1118 !important;
   border-right: 2px solid #141e28 !important;
   box-shadow: 6px 0 25px rgba(0, 0, 0, 0.4);
 }
 
-/* Logo 3D sutil */
+/* Logo 3D */
 .logo-3d {
   filter: drop-shadow(0 8px 12px rgba(0,0,0,0.5));
   transform: perspective(400px) rotateY(-8deg);
@@ -30,7 +30,7 @@ h1, h2, h3, .offcanvas-title {
   filter: drop-shadow(0 12px 20px rgba(0,0,0,0.7));
 }
 
-/* DESTELLO PERIMETRAL */
+/* Destello contorno */
 .nav-link-custom {
   position: relative;
   padding: 1px;
@@ -126,7 +126,7 @@ h1, h2, h3, .offcanvas-title {
   background: #f39c12; 
 }
 
-/* EFECTO MESA DE JUEGO */
+/* Efecto mesa de juego */
 .mesa-cartas {
   display: flex;
   justify-content: center;
@@ -191,15 +191,23 @@ h1, h2, h3, .offcanvas-title {
   opacity: 1;
 }
 
+body:has(.vista-cinematica) {
+  overflow: hidden;
+}
+
 .vista-cinematica {
   position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
+  inset: 0;
   background: rgba(11, 17, 24, 0.95);
   backdrop-filter: blur(15px);
   z-index: 9999;
   display: flex;
-  align-items: center;
+  align-items: flex-start; 
   justify-content: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 5vh 20px;
+  box-sizing: border-box;
   animation: aparecerFondo 0.5s ease forwards;
 }
 
@@ -208,15 +216,87 @@ h1, h2, h3, .offcanvas-title {
   flex-direction: row;
   width: 90%;
   max-width: 1000px;
+  margin: auto; 
   background: #161b22;
   border-radius: 15px;
   border: 2px solid var(--color-jugador);
   box-shadow: 0 0 50px rgba(0,0,0,0.6);
   overflow: hidden;
   animation: cartaSube 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  position: relative;
+  z-index: 2;
 }
 
-/* COLUMNA IZQUIERDA (Video e Info Básica) */
+/* Botones carrusel */
+.btn-carrusel {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #0b1118;
+  border: 2px solid var(--color-jugador);
+  color: var(--color-jugador);
+  padding: 10px 18px;
+  border-radius: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  transition: all 0.4s ease; 
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+  line-height: 1;
+}
+
+.btn-carrusel:hover {
+  background: var(--color-jugador);
+  color: #fff;
+  transform: translateY(-50%) scale(1.05);
+  box-shadow: 0 0 25px var(--color-jugador);
+}
+
+.btn-carrusel.prev { left: 20px; flex-direction: row; }
+.btn-carrusel.next { right: 20px; flex-direction: row-reverse; }
+
+.btn-carrusel .flecha {
+  display: inline-block;
+  transform: translateY(-1px); 
+}
+
+.btn-carrusel .nombre-nav {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  transform: translateY(1px);
+}
+
+.btn-carrusel:hover .nombre-nav {
+  max-width: 250px;
+  opacity: 1;
+}
+
+.btn-carrusel.prev:hover .nombre-nav { margin-left: 12px; }
+.btn-carrusel.next:hover .nombre-nav { margin-right: 12px; }
+
+/* En celulares reducción de los botones y anulamos el despliegue del nombre */
+@media (max-width: 768px) {
+  .btn-carrusel { padding: 8px 15px; }
+  .btn-carrusel.prev { left: 10px; }
+  .btn-carrusel.next { right: 10px; }
+  .btn-carrusel:hover .nombre-nav { display: none; }
+  
+  .panel-panoramico { flex-direction: column; min-height: 90vh; }
+  .columna-video, .columna-datos { padding: 15px; }
+  .video-vertical { max-width: 200px; }
+  .contenedor-mazos { flex-direction: column; gap: 20px; }
+  .carta-revelada { width: 100%; max-width: 250px; }
+}
+
+/* COLUMNA IZQUIERDA (avatar e información) */
 .columna-video {
   flex: 1;
   background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
@@ -236,7 +316,7 @@ h1, h2, h3, .offcanvas-title {
   margin-bottom: 20px;
 }
 
-/* COLUMNA DERECHA (Habilidades y Cartas) */
+/* COLUMNA DERECHA (habilidades y cartas) */
 .columna-datos {
   flex: 1.5;
   padding: 30px;
@@ -358,10 +438,10 @@ h1, h2, h3, .offcanvas-title {
   margin-top: 5px;
 }
 
-/* CARTAS REVELADAS */
+/* Cartas reveladas */
 .carta-revelada {
-  width: 170px;
-  min-height: 110px;
+  width: 220px; 
+  height: 280px;
   background: radial-gradient(circle, #ffffff 60%, #f4f1ea 100%);
   border: 2px solid #111;
   border-radius: 6px;
@@ -370,7 +450,7 @@ h1, h2, h3, .offcanvas-title {
   align-items: center;
   justify-content: space-between;
   text-align: center;
-  padding: 10px;
+  padding: 12px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.5);
 }
 
@@ -380,28 +460,55 @@ h1, h2, h3, .offcanvas-title {
 .carta-revelada small.titulo-carta {
   font-family: 'Oswald', sans-serif;
   color: #111;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: bold;
   letter-spacing: 0.5px;
   border-bottom: 2px solid #ccc;
   width: 100%;
   padding-bottom: 4px;
 }
 
-.carta-revelada p {
+.carta-revelada p.nombre-obra {
   font-family: 'Montserrat', sans-serif;
   color: #111;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 800;
   line-height: 1.2;
-  margin: 10px 0;
+  margin: 10px 0 2px 0;
 }
 
-.detalle-carta {
+.carta-revelada span.subtitulo-obra {
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.55rem;
+  font-size: 0.75rem;
   color: #555;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* Animaciones emojis */
+.reaccion-emoji {
+  position: absolute;
+  bottom: 35px;
+  left: 50%;
+  font-size: 1.8rem;
+  pointer-events: none;
+  animation: flotarCreciendo 1.2s ease-out forwards;
+  animation-delay: var(--retraso);
+  z-index: 9999;
+}
+
+@keyframes flotarCreciendo {
+  0% {
+    transform: translate(-50%, 0) scale(0.2);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(-50% + var(--desplazamiento-x)), -200px) scale(var(--escala));
+    opacity: 0;
+  }
 }
 
 .anim-0 { animation: caerCarta1 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
@@ -426,4 +533,134 @@ h1, h2, h3, .offcanvas-title {
   .columna-video, .columna-datos { padding: 15px; }
   .video-vertical { max-width: 200px; }
   .contenedor-mazos { flex-direction: column; gap: 20px; }
+  .carta-revelada { width: 100%; max-width: 250px; }
+}
+
+/* PORTADA TABLERO 3D */
+
+.tablero-wrapper {
+  min-height: 85vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+}
+
+/* El contenedor 3D */
+.contenedor-isometrico {
+  perspective: 1200px;
+}
+
+/* Grilla 6x6 que dibuja el tablero */
+.tablero-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 110px);
+  grid-template-rows: repeat(6, 110px);
+  background-color: #cde6d0;
+  border: 10px solid #111;
+  border-radius: 8px;
+  box-shadow: 
+    0 40px 60px rgba(0,0,0,0.6),
+    inset 0 0 0 2px #fff;
+  transform-style: preserve-3d;
+  transform: rotateX(55deg) rotateZ(-45deg);
+  transition: transform 0.5s ease;
+}
+
+/* Centro del tablero */
+.centro-tablero {
+  grid-column: 2 / 6;
+  grid-row: 2 / 6;
+  background-color: #cde6d0;
+  border: 2px dashed #99bba3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+}
+
+.logo-devopoly-img {
+  width: 250px;
+  filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5));
+  transform: translateZ(40px);
+}
+
+.zona-controles {
+  transform: translateZ(25px);
+}
+
+.dados-img {
+  width: 80px;
+  filter: drop-shadow(0 5px 5px rgba(0,0,0,0.4));
+  transition: transform 0.2s;
+}
+
+.btn-tirar-dados {
+  background: #f39c12;
+  color: white;
+  border: 2px solid #e67e22;
+  border-radius: 30px;
+  padding: 8px 25px;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  transition: all 0.2s;
+}
+
+.btn-tirar-dados:hover {
+  background: #e67e22;
+  transform: scale(1.05);
+}
+
+/* CASILLAS INDIVIDUALES */
+.casilla-3d {
+  background: #fff;
+  border: 1px solid #111;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.casilla-3d:hover {
+  transform: translateZ(15px);
+  box-shadow: -15px 15px 20px rgba(0,0,0,0.4);
+  z-index: 10;
+}
+
+.casilla-3d .franja-color {
+  height: 25px;
+  width: 100%;
+  border-bottom: 2px solid #111;
+}
+
+.casilla-3d .contenido-casilla {
+  flex-grow: 1;
+  padding: 4px;
+}
+
+.nombre-casilla {
+  font-size: 0.65rem;
+  font-family: 'Montserrat', sans-serif;
+  color: #111;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+/* Imágenes internas casillas */
+.icono-casilla {
+  width: 45px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Esquinas */
+.casilla-3d.esquina .contenido-casilla {
+  background: rgba(0,0,0,0.05);
+}
+.casilla-3d.esquina .icono-casilla {
+  width: 60px;
 }
