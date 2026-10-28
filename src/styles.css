@@ -1,0 +1,429 @@
+/* Fondo general y tipografías */
+body {
+  background-color: #1a252f;
+  background-image: radial-gradient(circle at 50% 50%, #2c3e50 0%, #080b12 100%);
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
+  margin: 0;
+}
+
+h1, h2, h3, .offcanvas-title {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Separación visual de la Sidebar */
+.sidebar-devopoly {
+  background-color: #0b1118 !important;
+  border-right: 2px solid #141e28 !important;
+  box-shadow: 6px 0 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Logo 3D sutil */
+.logo-3d {
+  filter: drop-shadow(0 8px 12px rgba(0,0,0,0.5));
+  transform: perspective(400px) rotateY(-8deg);
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+.logo-3d:hover {
+  transform: perspective(400px) rotateY(0deg) scale(1.03);
+  filter: drop-shadow(0 12px 20px rgba(0,0,0,0.7));
+}
+
+/* DESTELLO PERIMETRAL */
+.nav-link-custom {
+  position: relative;
+  padding: 1px;
+  border-radius: 6px;
+  overflow: hidden;
+  display: block;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.nav-link-custom::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, transparent 70%, #f39c12 100%);
+  animation: girarLuz 2.5s linear infinite;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.nav-link-custom:hover::before, .nav-link-custom.active::before {
+  opacity: 1;
+}
+
+@keyframes girarLuz {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.nav-link-inner {
+  position: relative;
+  display: block;
+  background-color: #0b1118;
+  padding: 12px 16px;
+  border-radius: 5px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  color: #aeb5be;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  z-index: 1;
+}
+
+.nav-link-custom:hover .nav-link-inner, .nav-link-custom.active .nav-link-inner {
+  color: #f39c12;
+  background-color: #121b25;
+}
+
+.nav-link-custom:hover {
+  cursor: url('/img/cursor-monopoly.png') 16 16, pointer;
+}
+
+/* FOOTER DE LA SIDEBAR */
+.sidebar-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.3));
+}
+
+.github-link {
+  color: #57606f;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.github-link:hover {
+  color: #ffffff;
+  transform: scale(1.15) translateY(-2px);
+}
+
+.footer-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  color: #8b949e;
+  font-weight: 500;
+}
+
+.footer-subtext {
+  font-size: 0.65rem;
+  color: #57606f;
+}
+
+::-webkit-scrollbar {
+  width: 8px; 
+}
+::-webkit-scrollbar-track {
+  background: #0b1118; 
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+::-webkit-scrollbar-thumb {
+  background: #2c3e50; 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f39c12; 
+}
+
+/* EFECTO MESA DE JUEGO */
+.mesa-cartas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 60px 40px;
+  min-height: 60vh;
+}
+
+.carta-contenedor {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+
+.carta-contenedor:nth-child(odd) { transform: rotate(-8deg) translateY(10px); }
+.carta-contenedor:nth-child(even) { transform: rotate(12deg) translateY(-10px); }
+
+.carta-contenedor:hover {
+  transform: rotate(0deg) scale(1.05) translateY(-10px);
+  z-index: 20;
+}
+
+.carta-esparcida {
+  width: 220px;
+  height: 320px;
+  background: linear-gradient(135deg, #161b22, #0b1118);
+  border: 4px solid #fff;
+  border-radius: 10px;
+  box-shadow: 5px 10px 20px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  z-index: 2; 
+  transition: all 0.3s ease;
+}
+
+.carta-contenedor:hover .carta-esparcida {
+  border-color: var(--color-jugador);
+  box-shadow: 0 15px 40px var(--color-jugador);
+}
+
+.avatar-escondido {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(30px);
+  width: 140px;
+  opacity: 0;
+  z-index: 1; 
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  pointer-events: none;
+  filter: drop-shadow(0 10px 10px rgba(0,0,0,0.8));
+}
+
+.carta-contenedor:hover .avatar-escondido {
+  transform: translateX(-50%) translateY(-110px);
+  opacity: 1;
+}
+
+.vista-cinematica {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(11, 17, 24, 0.95);
+  backdrop-filter: blur(15px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: aparecerFondo 0.5s ease forwards;
+}
+
+.panel-panoramico {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  max-width: 1000px;
+  background: #161b22;
+  border-radius: 15px;
+  border: 2px solid var(--color-jugador);
+  box-shadow: 0 0 50px rgba(0,0,0,0.6);
+  overflow: hidden;
+  animation: cartaSube 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* COLUMNA IZQUIERDA (Video e Info Básica) */
+.columna-video {
+  flex: 1;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+.video-vertical {
+  width: 100%;
+  max-width: 250px;
+  border-radius: 10px;
+  border: 2px solid var(--color-jugador);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  margin-bottom: 20px;
+}
+
+/* COLUMNA DERECHA (Habilidades y Cartas) */
+.columna-datos {
+  flex: 1.5;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.habilidad-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding: 10px 0;
+}
+
+.habilidad-nivel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #aeb5be;
+  font-size: 0.9rem;
+}
+
+/* Iconos de las casitas Monopoly */
+.icono-casa {
+  width: 16px; height: 16px;
+  background-color: #2ecc71;
+  border: 1px solid #111;
+  clip-path: polygon(50% 0%, 100% 40%, 100% 100%, 0 100%, 0 40%);
+}
+
+.icono-hotel {
+  background-color: #e74c3c;
+}
+
+.habilidad-nivel span {
+  min-width: 175px;
+  white-space: nowrap;
+}
+
+/* Botón cerrar */
+.btn-cerrar-panel {
+  background: transparent;
+  border: 2px solid var(--color-jugador);
+  color: var(--color-jugador);
+  font-weight: bold;
+  padding: 4px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+}
+.btn-cerrar-panel:hover {
+  background: var(--color-jugador);
+  color: #fff;
+  box-shadow: 0 0 10px var(--color-jugador);
+}
+
+/* SECCIÓN PELÍCULAS Y DISCOS */
+.seccion-gustos {
+  margin-top: 20px;
+  padding-top: 10px;
+}
+
+
+.titulo-gustos {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.contenedor-mazos {
+  display: flex;
+  gap: 30px;
+}
+
+.mazo-slot {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.mazo-estatico {
+  width: 170px;
+  height: 110px;
+  cursor: pointer;
+  border-radius: 8px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+  transition: transform 0.2s ease, filter 0.2s ease;
+  position: relative;
+}
+
+.mazo-estatico.suerte { border: 5px solid #e67e22; }
+.mazo-estatico.arca { border: 5px solid #3498db; }
+
+.mazo-estatico:hover {
+  transform: scale(1.05);
+  box-shadow: 4px 9px 15px rgba(0,0,0,0.6);
+}
+
+.mazo-estatico img {
+  max-width: 90px;
+  max-height: 90px;
+  object-fit: contain;
+}
+
+.texto-instruccion {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  color: #aeb5be;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 5px;
+}
+
+/* CARTAS REVELADAS */
+.carta-revelada {
+  width: 170px;
+  min-height: 110px;
+  background: radial-gradient(circle, #ffffff 60%, #f4f1ea 100%);
+  border: 2px solid #111;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  padding: 10px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.suerte-revelada { border-top: 8px solid #e67e22; }
+.arca-revelada { border-top: 8px solid #3498db; }
+
+.carta-revelada small.titulo-carta {
+  font-family: 'Oswald', sans-serif;
+  color: #111;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #ccc;
+  width: 100%;
+  padding-bottom: 4px;
+}
+
+.carta-revelada p {
+  font-family: 'Montserrat', sans-serif;
+  color: #111;
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 10px 0;
+}
+
+.detalle-carta {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.55rem;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.anim-0 { animation: caerCarta1 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+.anim-1 { animation: caerCarta2 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+.anim-2 { animation: caerCarta3 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+
+@keyframes caerCarta1 {
+  0% { transform: translateY(-30px) rotate(-5deg) scale(0.8); opacity: 0; }
+  100% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
+}
+@keyframes caerCarta2 {
+  0% { transform: translateY(-40px) rotate(8deg) scale(0.9); opacity: 0; }
+  100% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
+}
+@keyframes caerCarta3 {
+  0% { transform: translateY(-20px) scale(0.7); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .panel-panoramico { flex-direction: column; height: 90vh; overflow-y: auto; }
+  .columna-video, .columna-datos { padding: 15px; }
+  .video-vertical { max-width: 200px; }
+  .contenedor-mazos { flex-direction: column; gap: 20px; }
+}
