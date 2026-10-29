@@ -1,6 +1,3 @@
-// Sonidos de Devopoly. Los archivos están en public/audio/
-// El estado "silenciado" se guarda en el navegador para que valga en toda la aplicación.
-
 const CLAVE = "devopoly-silenciado";
 
 export function estaSilenciado() {
@@ -14,9 +11,7 @@ export function estaSilenciado() {
 export function guardarSilencio(silenciado) {
   try {
     localStorage.setItem(CLAVE, silenciado ? "1" : "0");
-  } catch {
-    // Sin almacenamiento disponible: el silencio vale solo para esta sección
-  }
+  } catch {}
 }
 
 export function reproducir(archivo, volumen = 0.3) {

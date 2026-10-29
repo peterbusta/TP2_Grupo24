@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from "react";
 import CartaRecurso from "../components/CartaRecurso.jsx";
 import "./MazoTecnologico.css";
 
-// Quita mayúsculas y tildes para que "diseno" encuentre "Diseño"
 const limpiar = (texto) =>
   String(texto).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
@@ -18,7 +17,7 @@ function ordenar(lista, criterio) {
   if (criterio === "precioAsc") return copia.sort((a, b) => a.precio - b.precio);
   if (criterio === "precioDesc") return copia.sort((a, b) => b.precio - a.precio);
   if (criterio === "nombre") return copia.sort((a, b) => a.nombre.localeCompare(b.nombre, "es"));
-  return copia; // el JSON ya viene en el orden del tablero
+  return copia;
 }
 
 function MazoTecnologico() {
@@ -36,8 +35,7 @@ function MazoTecnologico() {
       try {
         setCargando(true);
         setError("");
-        // Esta ruta apunta a public/data/recursos.json
-        const respuesta = await fetch("/data/recursos.json", { signal: controller.signal });
+        const respuesta = await fetch(`${import.meta.env.BASE_URL}data/recursos.json`, { signal: controller.signal });
         if (!respuesta.ok) throw new Error("No se pudo cargar el mazo.");
 
         const datos = await respuesta.json();
@@ -56,7 +54,6 @@ function MazoTecnologico() {
     return () => controller.abort();
   }, [intento]);
 
-  // Grupos de color, en el orden en que aparecen en el JSON
   const grupos = useMemo(() => {
     const mapa = new Map();
     recursos.forEach((r) => {
@@ -65,7 +62,6 @@ function MazoTecnologico() {
     return [...mapa.values()];
   }, [recursos]);
 
-  // Cartas que coinciden con el texto buscado (antes de aplicar el color)
   const porTexto = useMemo(() => {
     const texto = limpiar(busqueda.trim());
     if (!texto) return recursos;
@@ -135,11 +131,11 @@ function MazoTecnologico() {
           </div>
           <div className="mazo-encabezado-texto">
             <p className="mazo-sello text-uppercase">ARCA COMUNAL · ARCHIVO DEL EQUIPO</p>
-            {/* Mismas clases que el título de la portada (Tablero.jsx) */}
             <h1 className="titulo-neon font-oswald text-uppercase m-0">Mazo Tecnológico</h1>
-            <p className="mazo-bajada text-secondary fst-italic">
-              Herramientas, ideas y recursos para construir DEVOPOLY. Cada color es un grupo del tablero:
-              elegí uno para filtrar, o girá una carta para ver su dorso.
+            <p className="mazo-bajada text-secondary">
+              Las herramientas, los conceptos y los recursos con los que construimos Devopoly.
+              Cada color es un grupo temático inspirado en el tablero: elegí uno para filtrar o
+              girá una carta para leer su dorso.
             </p>
           </div>
         </header>
@@ -184,7 +180,9 @@ function MazoTecnologico() {
               onClick={() => setGrupoActivo(grupoActivo === g.grupo ? "Todos" : g.grupo)}
             >
               <span className="mazo-chip-punto" aria-hidden="true" />
-              {g.categoria} <small>{conteoPorGrupo[g.grupo] || 0}</small>
+              {g.categoria}
+              <span className="mazo-chip-grupo">{g.grupo}</span>
+              <small>{conteoPorGrupo[g.grupo] || 0}</small>
             </button>
           ))}
         </div>

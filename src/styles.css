@@ -1,4 +1,3 @@
-/* Fondo general y tipografías */
 body {
   background-color: #1a252f;
   background-image: radial-gradient(circle at 50% 50%, #2c3e50 0%, #080b12 100%);
@@ -12,14 +11,17 @@ h1, h2, h3, .offcanvas-title {
   font-family: 'Montserrat', sans-serif;
 }
 
-/* Separación visual de la sidebar */
+.font-oswald {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+}
+
 .sidebar-devopoly {
   background-color: #0b1118 !important;
   border-right: 2px solid #141e28 !important;
   box-shadow: 6px 0 25px rgba(0, 0, 0, 0.4);
 }
 
-/* Logo 3D */
 .logo-3d {
   filter: drop-shadow(0 8px 12px rgba(0,0,0,0.5));
   transform: perspective(400px) rotateY(-8deg);
@@ -30,7 +32,6 @@ h1, h2, h3, .offcanvas-title {
   filter: drop-shadow(0 12px 20px rgba(0,0,0,0.7));
 }
 
-/* Destello contorno */
 .nav-link-custom {
   position: relative;
   padding: 1px;
@@ -84,7 +85,6 @@ h1, h2, h3, .offcanvas-title {
   cursor: url('/img/cursor-monopoly.png') 16 16, pointer;
 }
 
-/* FOOTER DE LA SIDEBAR */
 .sidebar-footer {
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.3));
@@ -112,21 +112,20 @@ h1, h2, h3, .offcanvas-title {
 }
 
 ::-webkit-scrollbar {
-  width: 8px; 
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0b1118; 
+  background: #0b1118;
   border-left: 1px solid rgba(255, 255, 255, 0.05);
 }
 ::-webkit-scrollbar-thumb {
-  background: #2c3e50; 
+  background: #2c3e50;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #f39c12; 
+  background: #f39c12;
 }
 
-/* SUBMENÚ PERFILES */
 .cursor-pointer {
   cursor: pointer;
 }
@@ -139,7 +138,7 @@ h1, h2, h3, .offcanvas-title {
   margin: 0 !important;
   border-radius: 4px;
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.75rem; 
+  font-size: 0.75rem;
   line-height: 1.2 !important;
   color: #aeb5be;
   transition: color 0.3s ease, background-color 0.3s ease;
@@ -147,7 +146,7 @@ h1, h2, h3, .offcanvas-title {
   text-align: center;
 }
 
-.nav-link-custom:hover .nav-link-inner-compact, 
+.nav-link-custom:hover .nav-link-inner-compact,
 .nav-link-custom.active .nav-link-inner-compact {
   color: #f39c12;
   background-color: #121b25;
@@ -166,7 +165,6 @@ h1, h2, h3, .offcanvas-title {
   text-align: left !important;
 }
 
-/* Efecto mesa de juego */
 .mesa-cartas {
   display: flex;
   justify-content: center;
@@ -204,7 +202,7 @@ h1, h2, h3, .offcanvas-title {
   justify-content: center;
   text-align: center;
   position: relative;
-  z-index: 2; 
+  z-index: 2;
   transition: all 0.3s ease;
 }
 
@@ -220,7 +218,7 @@ h1, h2, h3, .offcanvas-title {
   transform: translateX(-50%) translateY(30px);
   width: 140px;
   opacity: 0;
-  z-index: 1; 
+  z-index: 1;
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   pointer-events: none;
   filter: drop-shadow(0 10px 10px rgba(0,0,0,0.8));
@@ -235,7 +233,6 @@ body:has(.vista-cinematica) {
   overflow: hidden;
 }
 
-/* Fondo general */
 .vista-cinematica {
   position: fixed;
   inset: 0;
@@ -243,7 +240,7 @@ body:has(.vista-cinematica) {
   backdrop-filter: blur(15px);
   z-index: 9999;
   display: flex;
-  align-items: flex-start; 
+  align-items: flex-start;
   justify-content: center;
   overflow-y: auto;
   overflow-x: hidden;
@@ -258,7 +255,6 @@ body:has(.vista-cinematica) {
   100% { opacity: 1; }
 }
 
-/* tarjeta de atrás */
 .vista-cinematica .panel-panoramico {
   animation: flipReverso 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
   transform-origin: center center;
@@ -280,7 +276,7 @@ body:has(.vista-cinematica) {
   flex-direction: row;
   width: 90%;
   max-width: 1000px;
-  margin: auto; 
+  margin: auto;
   background: #161b22;
   border-radius: 15px;
   border: 2px solid var(--color-jugador);
@@ -291,7 +287,6 @@ body:has(.vista-cinematica) {
   z-index: 2;
 }
 
-/* Botones carrusel */
 .btn-carrusel {
   position: fixed;
   top: 50%;
@@ -306,7 +301,7 @@ body:has(.vista-cinematica) {
   align-items: center;
   justify-content: center;
   z-index: 10000;
-  transition: all 0.4s ease; 
+  transition: all 0.4s ease;
   box-shadow: 0 0 20px rgba(0,0,0,0.6);
   line-height: 1;
 }
@@ -323,7 +318,7 @@ body:has(.vista-cinematica) {
 
 .btn-carrusel .flecha {
   display: inline-block;
-  transform: translateY(-1px); 
+  transform: translateY(-1px);
 }
 
 .btn-carrusel .nombre-nav {
@@ -346,13 +341,12 @@ body:has(.vista-cinematica) {
 .btn-carrusel.prev:hover .nombre-nav { margin-left: 12px; }
 .btn-carrusel.next:hover .nombre-nav { margin-right: 12px; }
 
-/* En celulares reducción de los botones y anulamos el despliegue del nombre */
 @media (max-width: 768px) {
   .btn-carrusel { padding: 8px 15px; }
   .btn-carrusel.prev { left: 10px; }
   .btn-carrusel.next { right: 10px; }
   .btn-carrusel:hover .nombre-nav { display: none; }
-  
+
   .panel-panoramico { flex-direction: column; min-height: 90vh; }
   .columna-video, .columna-datos { padding: 15px; }
   .video-vertical { max-width: 200px; }
@@ -360,7 +354,6 @@ body:has(.vista-cinematica) {
   .carta-revelada { width: 100%; max-width: 250px; }
 }
 
-/* COLUMNA IZQUIERDA (avatar e información) */
 .columna-video {
   flex: 1;
   background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
@@ -380,7 +373,6 @@ body:has(.vista-cinematica) {
   margin-bottom: 20px;
 }
 
-/* COLUMNA DERECHA (habilidades y cartas) */
 .columna-datos {
   flex: 1.5;
   padding: 30px;
@@ -404,7 +396,6 @@ body:has(.vista-cinematica) {
   font-size: 0.9rem;
 }
 
-/* Iconos de las casitas Monopoly */
 .icono-casa {
   width: 16px; height: 16px;
   background-color: #2ecc71;
@@ -421,7 +412,6 @@ body:has(.vista-cinematica) {
   white-space: nowrap;
 }
 
-/* Botón cerrar */
 .btn-cerrar-panel {
   background: transparent;
   border: 2px solid var(--color-jugador);
@@ -439,12 +429,10 @@ body:has(.vista-cinematica) {
   box-shadow: 0 0 10px var(--color-jugador);
 }
 
-/* SECCIÓN PELÍCULAS Y DISCOS */
 .seccion-gustos {
   margin-top: 20px;
   padding-top: 10px;
 }
-
 
 .titulo-gustos {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -502,9 +490,8 @@ body:has(.vista-cinematica) {
   margin-top: 5px;
 }
 
-/* Cartas reveladas */
 .carta-revelada {
-  width: 220px; 
+  width: 220px;
   height: 280px;
   background: radial-gradient(circle, #ffffff 60%, #f4f1ea 100%);
   border: 2px solid #111;
@@ -549,7 +536,6 @@ body:has(.vista-cinematica) {
   font-weight: 600;
 }
 
-/* Animaciones emojis */
 .reaccion-emoji {
   position: absolute;
   bottom: 35px;
@@ -600,8 +586,6 @@ body:has(.vista-cinematica) {
   .carta-revelada { width: 100%; max-width: 250px; }
 }
 
-/* PORTADA TABLERO 3D */
-
 .tablero-wrapper {
   min-height: 85vh;
   display: flex;
@@ -610,20 +594,18 @@ body:has(.vista-cinematica) {
   background: transparent;
 }
 
-/* El contenedor 3D */
 .contenedor-isometrico {
   perspective: 1800px;
 }
 
-/* --- TABLERO DARK MODE (Modernización) --- */
 .tablero-grid {
   display: grid;
   grid-template-columns: repeat(6, 110px);
   grid-template-rows: repeat(6, 110px);
-  background-color: #12161c; /* Fondo oscuro y moderno */
+  background-color: #12161c;
   border: 10px solid #000;
   border-radius: 12px;
-  box-shadow: 
+  box-shadow:
     0 50px 80px rgba(0,0,0,0.8),
     inset 0 0 0 2px rgba(255,255,255,0.1);
   transform-style: preserve-3d;
@@ -634,7 +616,7 @@ body:has(.vista-cinematica) {
 .centro-tablero {
   grid-column: 2 / 6;
   grid-row: 2 / 6;
-  background: radial-gradient(circle, #1a212a 0%, #0d1117 100%); /* Efecto metálico oscuro */
+  background: radial-gradient(circle, #1a212a 0%, #0d1117 100%);
   border: 2px dashed rgba(255,255,255,0.1);
   display: flex;
   flex-direction: column;
@@ -739,7 +721,7 @@ body:has(.vista-cinematica) {
 .mazo-arca { --mazo-color: #2586c1; color: var(--mazo-color); }
 
 .casilla-3d {
-  background: #1a212a; /* Fondo oscuro para las casillas */
+  background: #1a212a;
   border: 1px solid rgba(255,255,255,0.05);
   display: flex;
   flex-direction: column;
@@ -762,11 +744,10 @@ body:has(.vista-cinematica) {
   filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
 }
 
-/* PANEL DE CONTROLES FLOTANTE */
 .panel-controles-flotante {
   position: fixed;
   bottom: 40px;
-  left: 280px; /* Separado del sidebar */
+  left: 280px;
   background: rgba(22, 27, 34, 0.95);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255,255,255,0.1);
@@ -776,7 +757,6 @@ body:has(.vista-cinematica) {
   z-index: 10000;
 }
 
-/*  PEONES 3D */
 .peon-en-grilla {
   pointer-events: none;
   display: flex;
@@ -785,8 +765,14 @@ body:has(.vista-cinematica) {
   transform-style: preserve-3d;
 }
 
+.peon-interactivo:hover {
+  z-index: 999 !important;
+  cursor: pointer;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+}
+
 .ficha-animada {
-  width: 55px; 
+  width: 55px;
   height: 55px;
   transform-style: preserve-3d;
   transform-origin: bottom center;
@@ -796,11 +782,10 @@ body:has(.vista-cinematica) {
 .ficha-animada img {
   width: 100%;
   height: 100%;
-  object-fit: contain; 
+  object-fit: contain;
   filter: drop-shadow(-12px 15px 8px rgba(0,0,0,0.6));
 }
 
-/* Fichas esperando en salida */
 .esperando-salida img {
   filter: drop-shadow(-5px 10px 5px rgba(0,0,0,0.4)) grayscale(25%);
 }
@@ -817,14 +802,6 @@ body:has(.vista-cinematica) {
   animation: saltoFichaOrgánico 0.5s ease-in-out infinite alternate;
 }
 
-.ficha-animada img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; 
-  filter: drop-shadow(-15px 15px 10px rgba(0,0,0,0.6));
-}
-
-/* Fichas esperando en alida */
 .esperando-salida .ficha-animada img {
   filter: drop-shadow(-5px 10px 5px rgba(0,0,0,0.4)) grayscale(25%);
 }
@@ -850,7 +827,6 @@ body:has(.vista-cinematica) {
   transition: transform 0.2s;
 }
 
-/* BOTÓN DE DADOS */
 .btn-tirar-dados {
   background: transparent;
   color: #f39c12;
@@ -866,7 +842,7 @@ body:has(.vista-cinematica) {
 
 .btn-tirar-dados:hover:not(:disabled) {
   background: #f39c12;
-  color: #12161c; 
+  color: #12161c;
   box-shadow: 0 0 15px rgba(243, 156, 18, 0.5);
   transform: scale(1.05);
 }
@@ -898,7 +874,6 @@ body:has(.vista-cinematica) {
   to { margin-top: -12px; }
 }
 
-/* CASILLAS INDIVIDUALES */
 .casilla-3d {
   background: #fff;
   border: 1px solid #111;
@@ -943,14 +918,12 @@ body:has(.vista-cinematica) {
   line-height: 1;
 }
 
-/* Imágenes internas casillas */
 .icono-casilla {
   width: 45px;
   height: auto;
   object-fit: contain;
 }
 
-/* Esquinas */
 .casilla-3d.esquina .contenido-casilla {
   background: rgba(0,0,0,0.05);
 }
@@ -958,9 +931,6 @@ body:has(.vista-cinematica) {
   width: 60px;
 }
 
-/* LÓGICA INTERACTIVA DEL TABLERO */
-
-/* Resaltado de la casilla actual donde cae la ficha */
 .casilla-activa {
   transform: translateZ(25px) !important;
   box-shadow: 0 0 25px 8px rgba(243, 156, 18, 0.9) !important;
@@ -968,27 +938,55 @@ body:has(.vista-cinematica) {
   z-index: 20;
 }
 
-/* PEONES 3D */
 .peon-en-grilla {
   pointer-events: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  transform-style: preserve-3d; 
+  transform-style: preserve-3d;
+}
+
+.nombre-peon-flotante {
+  position: absolute;
+  bottom: 100%; 
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(20, 25, 35, 0.95);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  white-space: nowrap;
+  pointer-events: none;
+  
+  border-bottom: 3px solid var(--color-peon, #f39c12);
+  
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease-in-out;
+}
+
+.peon-interactivo:hover .nombre-peon-flotante {
+  opacity: 1;
+  visibility: visible;
+  bottom: 115%;
 }
 
 .ficha-animada {
-  width: 40px; 
+  width: 40px;
   height: 40px;
   transform-style: preserve-3d;
-  transform-origin: bottom center; 
+  transform-origin: bottom center;
   animation: saltoFichaOrgánico 0.6s ease-in-out infinite alternate;
 }
 
 .ficha-animada img {
   width: 100%;
   height: 100%;
-  object-fit: contain; 
+  object-fit: contain;
   filter: drop-shadow(-10px 10px 5px rgba(0,0,0,0.6));
 }
 
@@ -1001,20 +999,18 @@ body:has(.vista-cinematica) {
   to { transform: translateY(-12px); }
 }
 
-/* HUD ORGÁNICO */
 .tarjeta-hud-organica {
   background: #161b22;
   border: 2px solid var(--color-tarjeta);
   border-radius: 12px;
   width: 100%;
-  height: 420px;
+  min-height: 420px;
   display: flex;
   flex-direction: column;
   overflow: visible;
   animation: emergerHUD 0.4s ease forwards;
 }
 
-/* Tabla de pagos temáticos */
 .tabla-deudas {
   display: flex;
   flex-direction: column;
@@ -1090,7 +1086,7 @@ body:has(.vista-cinematica) {
 }
 
 .cuerpo-tarjeta {
-  flex-grow: 1; 
+  flex-grow: 1;
 }
 
 .spoiler-container {
@@ -1220,7 +1216,6 @@ body:has(.vista-cinematica) {
   100% { transform: translateY(0); opacity: 1; }
 }
 
-/* --- DADOS 3D CSS --- */
 .escena-dados {
   perspective: 600px;
 }
@@ -1257,7 +1252,7 @@ body:has(.vista-cinematica) {
   font-weight: bold;
   color: #111;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
-  backface-visibility: hidden; 
+  backface-visibility: hidden;
 }
 
 .frontal  { transform: rotateY(0deg) translateZ(25px); }
@@ -1267,7 +1262,6 @@ body:has(.vista-cinematica) {
 .arriba   { transform: rotateX(90deg) translateZ(25px); }
 .abajo    { transform: rotateX(-90deg) translateZ(25px); }
 
-/* LAYOUT GENERAL (Tablero Izq, Controles Der) */
 .layout-devopoly {
   display: flex;
   flex-direction: column;
@@ -1285,24 +1279,22 @@ body:has(.vista-cinematica) {
 .zona-tablero-wrapper {
   flex-grow: 1;
   display: flex;
-  justify-content: flex-start; 
+  justify-content: flex-start;
   padding-left: 20px;
 }
 
 .zona-interactiva-derecha {
-  width: 320px; 
+  width: 320px;
   flex-shrink: 0;
   padding-right: 20px;
   min-height: 600px;
 }
 
-/* AJUSTE DEL LOGO CENTRAL */
 .logo-devopoly-img {
-  width: 220px; 
-  transform: translateZ(25px); 
+  width: 220px;
+  transform: translateZ(25px);
 }
 
-/* FIJACIÓN DEL BADGE DE RESULTADO */
 .contenedor-resultado-fijo {
   height: 38px;
   display: flex;
@@ -1315,26 +1307,18 @@ body:has(.vista-cinematica) {
 
 .badge-resultado.invisible {
   opacity: 0;
-  pointer-events: none; 
+  pointer-events: none;
 }
 
 .badge-resultado.visible {
   opacity: 1;
 }
 
-/* TARJETA HUD: ESTILO PERFILES */
-.tarjeta-hud-organica.estilo-perfil {
-  border: 4px solid #fff; 
-  background: linear-gradient(135deg, #161b22, #0b1118); 
-  box-shadow: 5px 10px 20px rgba(0,0,0,0.5);
-}
-
-/* TARJETA INICIAL */
 .tarjeta-hud-organica.estilo-perfil {
   border: 4px solid #fff;
+  border-radius: 10px;
   background: linear-gradient(135deg, #161b22, #0b1118);
   box-shadow: 5px 10px 20px rgba(0,0,0,0.5);
-  border-radius: 10px;
 }
 
 .cambio-pagina-carta {
@@ -1376,7 +1360,6 @@ body:has(.vista-cinematica) {
   letter-spacing: 1px;
 }
 
-/* BOTONES CIRCULARES DE PEONES */
 .btn-peon-circular {
   position: relative;
   background: transparent;
@@ -1413,7 +1396,8 @@ body:has(.vista-cinematica) {
 .circulo-peon img {
   width: 32px;
   height: 32px;
-  object-fit: contain;
+  object-fit: cover;
+  border-radius: 50%;
   filter: drop-shadow(0 3px 4px rgba(0,0,0,0.5));
 }
 
@@ -1424,6 +1408,23 @@ body:has(.vista-cinematica) {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   transition: color 0.3s ease;
+}
+
+.rol-peon {
+  margin-top: 1px;
+  max-width: 74px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.56rem;
+  letter-spacing: 0.5px;
+  line-height: 1.15;
+  text-align: center;
+  text-transform: uppercase;
+  color: #7d8894;
+  transition: color 0.3s ease;
+}
+
+.btn-peon-circular:hover .rol-peon {
+  color: color-mix(in srgb, var(--color-peon) 70%, #ffffff);
 }
 
 .btn-peon-circular:hover .nombre-peon {
@@ -1479,8 +1480,6 @@ body:has(.vista-cinematica) {
 
 .peon-interactivo:focus-visible { outline: none; }
 
-
-/* SEPARADOR LUMINOSO */
 .separador-moderno {
   width: 85%;
   height: 2px;
@@ -1507,7 +1506,6 @@ body:has(.vista-cinematica) {
   100% { left: 110%; opacity: 0; }
 }
 
-/* EFECTO TERMINAL */
 .typewriter-text {
   position: relative;
   clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
@@ -1517,4 +1515,270 @@ body:has(.vista-cinematica) {
 
 @keyframes revelarTextoTerminal {
   to { clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); }
+}
+
+.portada-sello {
+  display: inline-block;
+  padding: .32rem .8rem;
+  border: 1px solid color-mix(in srgb, #f39c12 70%, transparent);
+  border-radius: 2px;
+  background: color-mix(in srgb, #f39c12 10%, transparent);
+  color: #f4c16e;
+  font-family: 'Oswald', sans-serif;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.portada-bajada {
+  max-width: 66ch;
+  margin: .55rem auto 0;
+  font-size: .95rem;
+  line-height: 1.6;
+}
+
+.portada-lema {
+  margin-top: .35rem;
+  color: color-mix(in srgb, #f39c12 75%, #ffffff);
+  font-size: .9rem;
+}
+
+.fila-portada {
+  --escala-tablero: 1;
+  padding-inline: 1rem;
+  container-type: inline-size;
+}
+
+.zona-interactiva-derecha,
+.tarjeta-hud-organica,
+.contenido-equipo {
+  min-width: 0;
+}
+
+@media (max-width: 1399px) {
+  .tooltip-peon {
+    display: none;
+  }
+
+  .tablero-grid {
+    --celda: clamp(38px, calc((100cqw - 20px) / 6), 96px);
+    --giro-peon: 0deg;
+    --inclinacion-peon: -24deg;
+    grid-template-columns: repeat(6, var(--celda));
+    grid-template-rows: repeat(6, var(--celda));
+    border-width: 6px;
+    border-radius: 8px;
+    transform: rotateX(24deg);
+  }
+
+  .casilla-3d .franja-color {
+    height: clamp(10px, 4.2cqw, 25px);
+    border-bottom-width: 1px;
+  }
+
+  .casilla-3d .contenido-casilla {
+    padding: clamp(1px, .5cqw, 4px);
+  }
+
+  .nombre-casilla {
+    font-size: clamp(9px, 2.4cqw, 10.4px);
+    line-height: 1.05;
+  }
+
+  .icono-casilla {
+    width: clamp(22px, 6.5cqw, 45px);
+  }
+
+  .casilla-3d.esquina .icono-casilla {
+    width: clamp(26px, 8.5cqw, 60px);
+  }
+
+  .centro-tablero .logo-devopoly-img {
+    width: clamp(92px, 30cqw, 224px);
+    margin-top: 0;
+  }
+
+  .mazos-tablero {
+    gap: clamp(6px, 2cqw, 16px);
+    margin-top: clamp(8px, 3cqw, 26px);
+    margin-right: 0;
+    margin-bottom: 4px;
+  }
+
+  .mazo-tablero {
+    width: clamp(62px, 15cqw, 118px);
+    height: clamp(46px, 11.5cqw, 88px);
+    font-size: clamp(.5rem, 1.1cqw, .64rem);
+  }
+
+  .mazo-capa,
+  .mazo-frontal {
+    width: 88%;
+    height: 84%;
+    border-width: clamp(2px, .5cqw, 4px);
+    border-radius: clamp(8px, 2cqw, 14px);
+  }
+
+  .mazo-capa-dos { left: 8.5%; top: 11%; }
+  .mazo-capa-uno { left: 4.2%; top: 5.7%; }
+
+  .mazo-frontal img {
+    top: 4%;
+    width: 41%;
+    height: auto;
+  }
+
+  .mazo-etiqueta {
+    right: 5%;
+    bottom: 5%;
+    left: 5%;
+    padding: 1px 2px;
+    font-size: clamp(.4rem, 1.05cqw, .56rem);
+    letter-spacing: .3px;
+  }
+
+  .ficha-animada {
+    width: clamp(24px, 6cqw, 40px);
+    height: clamp(24px, 6cqw, 40px);
+  }
+
+  .zona-tablero-wrapper {
+    justify-content: center;
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 1199px) {
+  .header-tablero {
+    padding-inline: .5rem;
+  }
+
+  .portada-bajada {
+    font-size: .88rem;
+  }
+
+  .fila-portada {
+    padding-inline: 0;
+  }
+
+  .zona-tablero-wrapper {
+    width: 100%;
+  }
+
+  .zona-interactiva-derecha {
+    width: 100%;
+    max-width: 440px;
+    min-height: 0;
+    padding-right: 0;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .tablero-grid {
+    --celda: clamp(38px, calc((100cqw - 20px) / 6), 80px);
+  }
+}
+
+@media (min-width: 1400px) {
+  .zona-tablero-wrapper {
+    justify-content: center;
+    padding-left: 0;
+    padding-inline: calc(141px * var(--escala-tablero));
+  }
+
+  .contenedor-isometrico {
+    zoom: var(--escala-tablero);
+  }
+}
+
+@media (min-width: 1400px) and (max-width: 1599px) {
+  .fila-portada { --escala-tablero: .73; }
+}
+
+@media (min-width: 1600px) and (max-width: 1799px) {
+  .fila-portada { --escala-tablero: .92; }
+}
+
+.equipo-ayuda {
+  margin-top: .55rem;
+  color: #8b97a3;
+  font-family: 'Oswald', sans-serif;
+  font-size: .62rem;
+  letter-spacing: .9px;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@media (min-width: 1400px) {
+  .equipo-ayuda {
+    display: none;
+  }
+}
+
+.equipo-avatares {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  justify-items: center;
+  gap: .6rem .4rem;
+  margin-top: .25rem;
+}
+
+@media (max-width: 380px) {
+  .equipo-avatares {
+    gap: .6rem .25rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .equipo-avatares {
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    margin-top: 1rem !important;
+  }
+}
+
+.btn-opcion-banquero {
+  background-color: rgba(30, 39, 51, 0.8);
+  border: 1px solid rgba(243, 156, 18, 0.4);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-opcion-banquero:hover:not(:disabled) {
+  background-color: rgba(243, 156, 18, 0.2);
+  border-color: #f39c12;
+  box-shadow: 0 0 10px rgba(243, 156, 18, 0.3);
+}
+
+.btn-opcion-banquero.btn-correcta {
+  background-color: #27ae60 !important;
+  border-color: #2ecc71 !important;
+  color: white;
+  box-shadow: 0 0 15px rgba(46, 204, 113, 0.5);
+}
+
+.btn-opcion-banquero.btn-incorrecta {
+  background-color: rgba(192, 57, 43, 0.4) !important;
+  border-color: #c0392b !important;
+  opacity: 0.6;
+}
+
+.feedback-banquero {
+  background-color: rgba(20, 25, 35, 0.9);
+  border-left: 4px solid #f39c12;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }

@@ -20,8 +20,8 @@ function Sidebar() {
 
   const links = [
     { path: '/', label: 'Portada' },
-    { path: '/datos', label: 'Mazo Tecnológico' },
-    { path: '/api', label: 'API Pública' },
+    { path: '/datos', label: 'Mazo tecnológico' },
+    { path: '/desafio', label: 'Desafío del banquero' },
     { path: '/arbol', label: 'Componentes' },
     { path: '/bitacora', label: 'Bitácora' },
     { path: '/contacto', label: 'Contacto' },
@@ -77,10 +77,8 @@ function Sidebar() {
               <span className="nav-link-inner">Portada</span>
             </NavLink>
 
-            {/* LINK 2: perfiles con submenú */}
             <div className="nav-item-group d-flex flex-column" style={{ gap: '2px' }}>
               
-              {/* Botón padre */}
               <div 
                 className={`nav-link-custom cursor-pointer text-decoration-none ${location.pathname === '/perfiles' ? 'active' : ''}`}
                 onClick={handlePerfilesClick}
@@ -100,7 +98,6 @@ function Sidebar() {
                 </div>
               </div>
               
-              {/* Submenú de integrantes */}
               <Collapse in={showPerfiles}>
                 <div className="px-4 pt-1 pb-2">
                   {integrantes.map(nombre => {
@@ -121,7 +118,6 @@ function Sidebar() {
               </Collapse>
             </div>
 
-            {/* RESTO DE LINKS */}
             {links.filter(l => l.path !== '/').map((link) => (
               <NavLink
                 to={link.path}
@@ -134,27 +130,26 @@ function Sidebar() {
             ))}
           </Nav>
 
-          {/* FOOTER */}
-      <div 
-        className="mt-5 pt-4 pb-3 w-100 text-center d-flex flex-column align-items-center" 
-        style={{ borderTop: '1px solid rgba(255, 255, 255, 0.05)' }} 
-      >
-        <a 
-          href="https://github.com/peterbusta/TP2_Grupo24" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="text-secondary text-decoration-none mb-2 hover-brillo"
-          style={{ transition: 'all 0.3s ease' }}
-        >
-          <i className="bi bi-github fs-5 opacity-75"></i>
-        </a>
-        <small className="d-block text-secondary fw-medium" style={{ fontSize: '0.75rem', letterSpacing: '0.5px' }}>
-          © 2026 Devopoly
-        </small>
-        <small className="d-block text-secondary opacity-50 mt-1" style={{ fontSize: '0.7rem' }}>
-          Todos los derechos reservados.
-        </small>
-      </div>
+          <div 
+            className="mt-5 pt-4 pb-3 w-100 text-center d-flex flex-column align-items-center" 
+            style={{ borderTop: '1px solid rgba(255, 255, 255, 0.05)' }} 
+          >
+            <a 
+              href="https://github.com/peterbusta/TP2_Grupo24" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-secondary text-decoration-none mb-2 hover-brillo"
+              style={{ transition: 'all 0.3s ease' }}
+            >
+              <i className="bi bi-github fs-5 opacity-75"></i>
+            </a>
+            <small className="d-block text-secondary fw-medium" style={{ fontSize: '0.75rem', letterSpacing: '0.5px' }}>
+              © 2026 Devopoly
+            </small>
+            <small className="d-block text-secondary opacity-50 mt-1" style={{ fontSize: '0.7rem' }}>
+              Todos los derechos reservados.
+            </small>
+          </div>
         </Offcanvas.Body>
       </Offcanvas>
     </>

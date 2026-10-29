@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { estaSilenciado, guardarSilencio } from "../utils/sonido.js";
 
-// Un único estado de "silenciado" para toda la app. Se recuerda entre secciones y al recargar.
 const SilencioContext = createContext({ silenciado: false, alternar: () => {} });
 
 export function SilencioProvider({ children }) {

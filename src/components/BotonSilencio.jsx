@@ -1,6 +1,5 @@
 import { useSilencio } from "../context/SilencioContext.jsx";
 
-// Mismo botón que tenía la portada, ahora disponible en todas las secciones (se monta una vez en App.jsx)
 function BotonSilencio() {
   const { silenciado, alternar } = useSilencio();
   const etiqueta = silenciado ? "Activar sonido" : "Silenciar sonido";

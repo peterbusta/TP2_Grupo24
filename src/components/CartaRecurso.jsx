@@ -2,7 +2,6 @@ import { useState } from "react";
 import { reproducir } from "../utils/sonido.js";
 import "./CartaRecurso.css";
 
-// Mismos niveles que la tarjeta de propiedad del tablero (Tablero.jsx)
 const NIVELES = [
   { etiqueta: "Renta", casas: 0 },
   { etiqueta: "Renta con 1 casa", casas: 1 },
@@ -18,18 +17,12 @@ function Casitas({ cantidad }) {
   ));
 }
 
-/**
- * Una carta del mazo. Se reutiliza con distintos datos mediante la prop `recurso`.
- * Frente: tabla de rentas (igual que el tablero) + botón "Revelar el costo real".
- * Dorso: qué es, para qué sirve y precio de compra.
- */
 function CartaRecurso({ recurso, orden = 0 }) {
   const [volteada, setVolteada] = useState(false);
   const [revelado, setRevelado] = useState(false);
 
   const { nombre, grupo, categoria, color, precio, subtitulo, valores, cierre, descripcion, uso } = recurso;
 
-  // Mismos sonidos que la tarjeta de la portada: carta al girar, moneda al revelar el costo
   const girar = (haciaDorso) => {
     reproducir("carta.mp3", 0.3);
     setVolteada(haciaDorso);
@@ -47,7 +40,6 @@ function CartaRecurso({ recurso, orden = 0 }) {
       aria-label={`Carta ${nombre}, grupo ${grupo}`}
     >
       <div className="carta-interior">
-        {/* FRENTE */}
         <div className="carta-cara carta-frente">
           <span className="carta-grupo">{categoria}</span>
           <button
@@ -100,7 +92,6 @@ function CartaRecurso({ recurso, orden = 0 }) {
           </div>
         </div>
 
-        {/* DORSO */}
         <div className="carta-cara carta-dorso">
           <span className="carta-grupo">{categoria}</span>
           <button

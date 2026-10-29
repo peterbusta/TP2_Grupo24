@@ -203,10 +203,10 @@ function Tablero() {
   ];
 
   const peones = [
-    { id: 1, img: '/img/sombrero.png', pos: posicionActual, nombre: 'FLAVIA BERZUINI', color: '#9b59b6' },
-    { id: 2, img: '/img/perro.png', pos: 0, nombre: 'BRIAN SABIO', color: '#1e3799' },
-    { id: 3, img: '/img/dedal.png', pos: 0, nombre: 'LUDMILA QUIROZ', color: '#2ecc71' },
-    { id: 4, img: '/img/auto.png', pos: 0, nombre: 'PEDRO BUSTAMANTE', color: '#f39c12' }
+    { id: 1, img: '/img/sombrero.png', avatar: '/img/avatar-flavia.png', pos: posicionActual, nombre: 'FLAVIA BERZUINI', color: '#9b59b6' },
+    { id: 2, img: '/img/perro.png', avatar: '/img/avatar-brian.png', pos: 0, nombre: 'BRIAN SABIO', color: '#1e3799' },
+    { id: 3, img: '/img/dedal.png', avatar: '/img/avatar-ludmila.png', pos: 0, nombre: 'LUDMILA QUIROZ', color: '#2ecc71' },
+    { id: 4, img: '/img/auto.png', avatar: '/img/avatar-pedro.png', pos: 0, nombre: 'PEDRO BUSTAMANTE', color: '#f39c12' }
   ];
 
   const datosEquipo = [
@@ -336,15 +336,19 @@ function Tablero() {
   return (
     <div className="layout-devopoly">
 
-      {/* CABECERA LIMPIA */}
-      <div className="header-tablero text-center mb-2 w-100">
+      <div className="header-tablero text-center mb-3 w-100">
+        <p className="portada-sello mb-2">GRUPO 24 · FRONT END</p>
         <h1 className="titulo-neon font-oswald text-uppercase m-0">¡Bienvenidos a Devopoly!</h1>
-        <p className="text-secondary fst-italic">Donde los bugs pagan alquiler y el código limpio gana la partida.</p>
+        <p className="portada-bajada text-secondary mb-0" style={{ maxWidth: '900px', margin: '0 auto' }}>
+          Somos cuatro estudiantes de la Tecnicatura en Desarrollo de Software. Convertimos el
+          Monopoly en una app React: cada propiedad es una tecnología, cada carta una excusa para
+          aprender algo nuevo. Tirá los dados, abrí las fichas y entrá a los perfiles del equipo.
+        </p>
+        <p className="portada-lema fst-italic mb-0">Donde los bugs pagan alquiler y el código limpio gana la partida.</p>
       </div>
 
-      <div className="d-flex w-100 flex-column flex-xl-row justify-content-between align-items-center gap-4 px-4">
+      <div className="fila-portada d-flex w-100 flex-column flex-xl-row justify-content-between align-items-center gap-4">
         
-        {/* TABLERO 3D */}
         <div className="zona-tablero-wrapper">
           <div className="contenedor-isometrico">
             <div className="tablero-grid">
@@ -401,12 +405,12 @@ function Tablero() {
                 const isActiva = peon.pos === posicionActual && !isSalida;
                 
                 const offsets = [
-                  { x: -18, y: -18 },
-                  { x: 18, y: -18 },
-                  { x: -18, y: 18 },
-                  { x: 18, y: 18 }
+                  { x: -35, y: -35 },
+                  { x: 35, y: -35 },
+                  { x: -35, y: 35 },
+                  { x: 35, y: 35 }
                 ];
-                
+
                 const offsetX = isSalida ? offsets[i].x : 0;
                 const offsetY = isSalida ? offsets[i].y : 0;
                 const elevacionZ = isActiva ? 70 : 45;
@@ -418,22 +422,24 @@ function Tablero() {
                     style={{
                       gridColumn: casilla.col,
                       gridRow: casilla.row,
-                      transform: `translate(${offsetX}px, ${offsetY}px) translateZ(${elevacionZ}px) rotateZ(45deg) rotateX(-50deg)`,
+                      transform: `translate(${offsetX}px, ${offsetY}px) translateZ(${elevacionZ}px) rotateZ(var(--giro-peon, 45deg)) rotateX(var(--inclinacion-peon, -50deg))`,
                       zIndex: 100 + i,
                       '--color-peon': peon.color
                     }}
                     role="button"
                     tabIndex={0}
-                    onClick={() => isSalida ? navigate('/perfiles') : navigate('/perfiles', { state: { jugador: peon.nombre } })}
+                    aria-label={`Ver el perfil de ${peon.nombre}`}
+                    onClick={() => navigate('/perfiles', { state: { jugador: peon.nombre } })}
                     onKeyDown={(event) => {
                       if (event.key === 'Enter' || event.key === ' ') {
                         event.preventDefault();
-                        isSalida ? navigate('/perfiles') : navigate('/perfiles', { state: { jugador: peon.nombre } });
+                        navigate('/perfiles', { state: { jugador: peon.nombre } });
                       }
                     }}
                   >
                     <div className={`ficha-animada ${isSalida ? 'esperando-salida' : ''}`}>
                       <img src={peon.img} alt={peon.nombre} />
+                      <span className="nombre-peon-flotante">{peon.nombre.split(' ')[0].toLowerCase()}</span>
                     </div>
                   </div>
                 );
@@ -443,7 +449,6 @@ function Tablero() {
           </div>
         </div>
 
-        {/* ZONA DERECHA FIJA */}
         <div className="zona-interactiva-derecha d-flex flex-column align-items-center gap-3">
           
           <div className="contenedor-controles d-flex flex-column align-items-center mb-2 w-100">
@@ -475,7 +480,6 @@ function Tablero() {
             </div>
           </div>
 
-          {/* TARJETA HUD DINÁMICA */}
           {tarjetaActiva && (
             <div 
               key={versionTarjeta}
@@ -487,7 +491,6 @@ function Tablero() {
                   {tarjetaActiva.tipo === 'especial' ? tarjetaActiva.titulo :
                    tarjetaActiva.tipo === 'equipo' ? 'NUESTRO EQUIPO' : tarjetaActiva.nombre}
                 </span>
-                {/* SUBTÍTULO TEMÁTICO DE LA PROPIEDAD */}
                 {tarjetaActiva.tipo === 'propiedad' && (
                   <small className="text-white opacity-90 fst-italic mt-1" style={{ fontSize: '0.9rem', textTransform: 'none', fontWeight: 'normal' }}>
                     {getTema(tarjetaActiva.nombre).subtitulo}
@@ -499,32 +502,34 @@ function Tablero() {
                 
                 {tarjetaActiva.tipo === 'equipo' ? (
                   <div className="contenido-equipo h-100 d-flex flex-column justify-content-between text-center">
-                    <div className="d-flex justify-content-center gap-2 mt-1">
+                    <div className="equipo-avatares mt-1">
                       {peones.map(peon => (
                         <button 
                           key={`btn-${peon.id}`} 
                           className="btn-peon-circular d-flex flex-column align-items-center"
                           onClick={() => navigate('/perfiles', { state: { jugador: peon.nombre } })}
                           style={{ '--color-peon': peon.color }}
+                          aria-label={`Ver el perfil de ${peon.nombre}`}
                         >
                           <div className="circulo-peon">
-                            <img src={peon.img} alt={peon.nombre} />
+                            <img src={peon.avatar} alt={`Avatar de ${peon.nombre}`} loading="lazy" />
                           </div>
                           <span className="nombre-peon mt-2">{peon.nombre.split(' ')[0]}</span>
+                          <span className="rol-peon">{peon.rol}</span>
                           <span className="tooltip-peon" role="tooltip">Ver perfil de {peon.nombre.split(' ')[0]}</span>
                         </button>
                       ))}
                     </div>
 
-                    <div className="separador-moderno my-3">
+                    <div className="separador-moderno my-1">
                       <div className="linea-brillo"></div>
                     </div>
 
-                    <div className="seccion-propuesta pb-2 text-start">
-                      <small className="font-oswald text-warning d-block mb-2 letter-spacing-1 text-uppercase text-center">
-                        Devopoly Team Propuesta
+                    <div className="seccion-propuesta text-start">
+                      <small className="font-oswald text-warning d-block mb-1 letter-spacing-1 text-uppercase text-center" style={{ fontSize: '0.8rem' }}>
+                        Devopoly team: próposito y visión
                       </small>
-                      <p className="text-white opacity-75 fst-italic m-0" style={{ fontSize: '0.85rem', lineHeight: '1.4', minHeight: '90px' }}>
+                      <p className="text-white opacity-75 fst-italic m-0" style={{ fontSize: '0.8rem', lineHeight: '1.3', minHeight: '65px' }}>
                         {textoPropuesta}
                         <span className="cursor-titilante">|</span>
                       </p>

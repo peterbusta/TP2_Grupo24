@@ -1,5 +1,3 @@
-/* Las cartas tienen su propio CSS en components/CartaRecurso.css */
-
 .mazo-tecnologico {
   --mazo-panel: rgba(25, 35, 46, 0.8);
   --mazo-texto: #f3f5f7;
@@ -10,10 +8,9 @@
   min-width: 0;
   padding: clamp(16px, 3vw, 32px);
   color: var(--mazo-texto);
-  container-type: inline-size; /* las columnas de cartas dependen del ancho de esta sección */
+  container-type: inline-size;
 }
 
-/* ENCABEZADO: texto centrado como la portada, con la pila de cartas a la izquierda */
 .mazo-encabezado {
   display: grid;
   grid-template-columns: 138px minmax(0, 1fr) 138px;
@@ -50,7 +47,6 @@
 .mazo-sello { margin: 0 0 6px; color: var(--mazo-dorado); font-size: 0.72rem; font-weight: 800; letter-spacing: 1.5px; }
 .mazo-bajada { max-width: 62ch; margin: 8px auto 0; line-height: 1.6; }
 
-/* FILTROS */
 .mazo-filtros {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(180px, 1fr);
@@ -79,7 +75,6 @@
   outline-offset: 1px;
 }
 
-/* CHIPS DE COLOR: clasifican el mazo igual que los grupos del tablero */
 .mazo-grupos { display: flex; flex-wrap: wrap; gap: 8px; }
 
 .mazo-chip {
@@ -99,6 +94,10 @@
 }
 
 .mazo-chip small { color: var(--mazo-secundario); font-size: 0.72rem; }
+.mazo-chip-grupo {
+  color: color-mix(in srgb, var(--chip-color) 60%, #ffffff);
+  font-size: 0.72rem;
+}
 .mazo-chip:hover { border-color: var(--chip-color); }
 
 .mazo-chip.activo {
@@ -133,8 +132,6 @@
 .mazo-restablecer:hover { background: var(--mazo-dorado); color: #111820; }
 .mazo-restablecer:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 
-/* GRILLA DE CARTAS: 1, 2, 3 o 4 por fila según el ancho de la sección.
-   Cada carta mide como máximo 340 px (el tamaño de la tarjeta del tablero) y se achica sola. */
 .mazo-grid {
   display: grid;
   grid-template-columns: minmax(0, 340px);
@@ -148,7 +145,6 @@
 @container (min-width: 830px)  { .mazo-grid { grid-template-columns: repeat(3, minmax(0, 340px)); } }
 @container (min-width: 1100px) { .mazo-grid { grid-template-columns: repeat(4, minmax(0, 340px)); } }
 
-/* ESTADOS: carga, error y sin resultados */
 .mazo-estado, .mazo-vacio {
   margin: auto;
   padding: 32px 20px;

@@ -202,12 +202,11 @@ function Perfiles() {
 
   return (
     <div className="container-fluid pt-3 pb-5 relative">
-      <div className="text-center mb-5">
-        <h2 className="text-warning font-oswald text-uppercase fs-1">Mesa de Jugadores</h2>
+      <div className="header-tablero text-center mb-5 w-100">
+        <h2 className="titulo-neon font-oswald text-uppercase text-white m-0">Mesa de Jugadores</h2>
         <p className="text-secondary">Elegí una carta para revelar a su desarrollador</p>
       </div>
       
-      {/* 1. SOLO mostramos las 4 cartas si NO hay nadie seleccionado */}
       {!jugadorActivo && (
         <div className="mesa-cartas mt-4">
           {equipo.map(jugador => (
@@ -231,7 +230,6 @@ function Perfiles() {
       {jugadorActivo && (
         <div className="vista-cinematica">
           
-          {/* Flecha izquierda */}
           <button className="btn-carrusel prev" onClick={() => cambiarJugador(prevJugador)} style={{ '--color-jugador': jugadorActivo.color }}>
             <span className="flecha fs-4 fw-bold">❮</span>
             <span className="nombre-nav">{prevJugador.nombre}</span>
@@ -383,7 +381,6 @@ function Perfiles() {
             </div>
           </div>
 
-          {/* Flecha derecha */}
           <button className="btn-carrusel next" onClick={() => cambiarJugador(nextJugador)} style={{ '--color-jugador': jugadorActivo.color }}>
             <span className="nombre-nav">{nextJugador.nombre}</span>
             <span className="flecha fs-4 fw-bold">❯</span>
