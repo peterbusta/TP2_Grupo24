@@ -69,7 +69,7 @@ h1, h2, h3, .offcanvas-title {
   padding: 12px 16px;
   border-radius: 5px;
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: #aeb5be;
   transition: color 0.3s ease, background-color 0.3s ease;
   z-index: 1;
@@ -124,6 +124,44 @@ h1, h2, h3, .offcanvas-title {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #f39c12; 
+}
+
+/* SUBMENÚ PERFILES */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.nav-link-inner-compact {
+  position: relative;
+  display: block;
+  background-color: #0b1118;
+  padding: 4px 10px !important;
+  margin: 0 !important;
+  border-radius: 4px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem; 
+  line-height: 1.2 !important;
+  color: #aeb5be;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  z-index: 1;
+  text-align: center;
+}
+
+.nav-link-custom:hover .nav-link-inner-compact, 
+.nav-link-custom.active .nav-link-inner-compact {
+  color: #f39c12;
+  background-color: #121b25;
+}
+
+.submenu-rebelde {
+  margin: 0 0 4px 0 !important;
+  display: block !important;
+}
+
+.submenu-rebelde .nav-link-inner-compact {
+  padding: 6px 10px !important;
+  margin: 0 !important;
+  line-height: 1.2 !important;
 }
 
 /* Efecto mesa de juego */
@@ -195,6 +233,7 @@ body:has(.vista-cinematica) {
   overflow: hidden;
 }
 
+/* Fondo general */
 .vista-cinematica {
   position: fixed;
   inset: 0;
@@ -208,7 +247,30 @@ body:has(.vista-cinematica) {
   overflow-x: hidden;
   padding: 5vh 20px;
   box-sizing: border-box;
-  animation: aparecerFondo 0.5s ease forwards;
+  animation: aparecerFondo 0.4s ease forwards;
+  perspective: 1200px;
+}
+
+@keyframes aparecerFondo {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* tarjeta de atrás */
+.vista-cinematica .panel-panoramico {
+  animation: flipReverso 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  transform-origin: center center;
+}
+
+@keyframes flipReverso {
+  0% {
+    opacity: 0;
+    transform: rotateY(-90deg) scale(0.85);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateY(0deg) scale(1);
+  }
 }
 
 .panel-panoramico {
@@ -689,17 +751,16 @@ body:has(.vista-cinematica) {
 .nombre-casilla {
   font-size: 0.65rem;
   font-family: 'Montserrat', sans-serif;
-  color: #a3b3c4; /* Texto gris claro en lugar de negro */
+  color: #a3b3c4;
   text-transform: uppercase;
   line-height: 1;
 }
 
-/* Efecto de brillo sutil para el logo central */
 .img-brillo {
   filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
 }
 
-/* --- PANEL DE CONTROLES FLOTANTE --- */
+/* PANEL DE CONTROLES FLOTANTE */
 .panel-controles-flotante {
   position: fixed;
   bottom: 40px;
@@ -713,13 +774,13 @@ body:has(.vista-cinematica) {
   z-index: 10000;
 }
 
-/* --- PEONES 3D (Anti-aplastamiento) --- */
+/*  PEONES 3D */
 .peon-en-grilla {
   pointer-events: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  transform-style: preserve-3d; /* Clave: Mantiene el 3D sin aplastarse */
+  transform-style: preserve-3d;
 }
 
 .ficha-animada {
@@ -733,11 +794,11 @@ body:has(.vista-cinematica) {
 .ficha-animada img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Obliga a mantener la proporción sin deformarse */
+  object-fit: contain; 
   filter: drop-shadow(-12px 15px 8px rgba(0,0,0,0.6));
 }
 
-/* Fichas esperando en Salida (grises y con sombra suave) */
+/* Fichas esperando en salida */
 .esperando-salida img {
   filter: drop-shadow(-5px 10px 5px rgba(0,0,0,0.4)) grayscale(25%);
 }
@@ -747,7 +808,6 @@ body:has(.vista-cinematica) {
   to { transform: translateY(-15px); }
 }
 
-/* El interior solo se encarga de saltar */
 .ficha-animada {
   width: 100%;
   height: 100%;
@@ -762,7 +822,7 @@ body:has(.vista-cinematica) {
   filter: drop-shadow(-15px 15px 10px rgba(0,0,0,0.6));
 }
 
-/* Fichas esperando en Salida (un poco grises y sombra más suave) */
+/* Fichas esperando en alida */
 .esperando-salida .ficha-animada img {
   filter: drop-shadow(-5px 10px 5px rgba(0,0,0,0.4)) grayscale(25%);
 }
@@ -771,7 +831,6 @@ body:has(.vista-cinematica) {
   from { transform: translateY(0); }
   to { transform: translateY(-15px); }
 }
-
 
 .logo-devopoly-img {
   width: 250px;
@@ -789,21 +848,20 @@ body:has(.vista-cinematica) {
   transition: transform 0.2s;
 }
 
-/* --- BOTÓN DE DADOS (Estilo Outline Redondeado) --- */
+/* BOTÓN DE DADOS */
 .btn-tirar-dados {
   background: transparent;
   color: #f39c12;
   border: 2px solid #f39c12;
-  border-radius: 50px; /* Forma de píldora completa */
+  border-radius: 50px;
   padding: 10px 30px;
   font-size: 1.2rem;
   letter-spacing: 1.5px;
   transition: all 0.3s ease;
   cursor: pointer;
-  width: 100%; /* Fuerza el mismo ancho que el contenedor */
+  width: 100%;
 }
 
-/* Efecto hover: Se rellena de color y el texto pasa a oscuro */
 .btn-tirar-dados:hover:not(:disabled) {
   background: #f39c12;
   color: #12161c; 
@@ -811,7 +869,6 @@ body:has(.vista-cinematica) {
   transform: scale(1.05);
 }
 
-/* Estado deshabilitado (mientras los dados giran) */
 .btn-tirar-dados:disabled {
   border-color: #555;
   color: #555;
@@ -821,17 +878,15 @@ body:has(.vista-cinematica) {
   box-shadow: none;
 }
 
-/* --- BADGE DE RESULTADO UNIFICADO --- */
 .badge-resultado {
   background: rgba(243, 156, 18, 0.1);
   border: 1px solid rgba(243, 156, 18, 0.5);
-  border-radius: 50px; /* Misma curva que el botón */
-  width: 100%; /* Mismo ancho que el botón */
+  border-radius: 50px;
+  width: 100%;
   text-align: center;
   padding: 8px 20px;
 }
 
-/* Fichas esperando AFUERA de la salida */
 .fuera-de-salida img {
   filter: drop-shadow(-10px 10px 5px rgba(0,0,0,0.5)) grayscale(30%);
 }
@@ -901,7 +956,7 @@ body:has(.vista-cinematica) {
   width: 60px;
 }
 
-/* --- LÓGICA INTERACTIVA DEL TABLERO --- */
+/* LÓGICA INTERACTIVA DEL TABLERO */
 
 /* Resaltado de la casilla actual donde cae la ficha */
 .casilla-activa {
@@ -911,7 +966,7 @@ body:has(.vista-cinematica) {
   z-index: 20;
 }
 
-/* --- PEONES 3D (Anti-aplastamiento y proporciones) --- */
+/* PEONES 3D */
 .peon-en-grilla {
   pointer-events: none;
   display: flex;
@@ -944,7 +999,7 @@ body:has(.vista-cinematica) {
   to { transform: translateY(-12px); }
 }
 
-/* --- HUD ORGÁNICO --- */
+/* HUD ORGÁNICO */
 .tarjeta-hud-organica {
   background: #161b22;
   border: 2px solid var(--color-tarjeta);
@@ -957,7 +1012,7 @@ body:has(.vista-cinematica) {
   animation: emergerHUD 0.4s ease forwards;
 }
 
-/* Tabla de pagos temáticos: conserva la lectura de un título de Monopoly. */
+/* Tabla de pagos temáticos */
 .tabla-deudas {
   display: flex;
   flex-direction: column;
@@ -1210,7 +1265,7 @@ body:has(.vista-cinematica) {
 .arriba   { transform: rotateX(90deg) translateZ(25px); }
 .abajo    { transform: rotateX(-90deg) translateZ(25px); }
 
-/* --- LAYOUT GENERAL (Tablero Izq, Controles Der) --- */
+/* LAYOUT GENERAL (Tablero Izq, Controles Der) */
 .layout-devopoly {
   display: flex;
   flex-direction: column;
@@ -1239,15 +1294,15 @@ body:has(.vista-cinematica) {
   min-height: 600px;
 }
 
-/* --- AJUSTE DEL LOGO CENTRAL --- */
+/* AJUSTE DEL LOGO CENTRAL */
 .logo-devopoly-img {
   width: 220px; 
   transform: translateZ(25px); 
 }
 
-/* --- FIJACIÓN DEL BADGE DE RESULTADO --- */
+/* FIJACIÓN DEL BADGE DE RESULTADO */
 .contenedor-resultado-fijo {
-  height: 38px; /* Altura exacta que ocupa el badge */
+  height: 38px;
   display: flex;
   justify-content: center;
 }
@@ -1256,7 +1311,6 @@ body:has(.vista-cinematica) {
   transition: opacity 0.3s ease;
 }
 
-/* El elemento existe en el HTML ocupando espacio, pero es invisible */
 .badge-resultado.invisible {
   opacity: 0;
   pointer-events: none; 
@@ -1266,23 +1320,21 @@ body:has(.vista-cinematica) {
   opacity: 1;
 }
 
-/* --- TARJETA HUD: ESTILO PERFILES --- */
-/* Cuando la tarjeta activa es el Propósito, hereda el diseño de los perfiles */
+/* TARJETA HUD: ESTILO PERFILES */
 .tarjeta-hud-organica.estilo-perfil {
-  border: 4px solid #fff; /* Mismo borde de las tarjetas de perfiles */
-  background: linear-gradient(135deg, #161b22, #0b1118); /* Fondo oscuro profundo */
-  box-shadow: 5px 10px 20px rgba(0,0,0,0.5); /* Sombra idéntica a los perfiles */
+  border: 4px solid #fff; 
+  background: linear-gradient(135deg, #161b22, #0b1118); 
+  box-shadow: 5px 10px 20px rgba(0,0,0,0.5);
 }
 
-/* --- TARJETA INICIAL: ESTILO PERFILES EXACTO --- */
+/* TARJETA INICIAL */
 .tarjeta-hud-organica.estilo-perfil {
   border: 4px solid #fff;
   background: linear-gradient(135deg, #161b22, #0b1118);
   box-shadow: 5px 10px 20px rgba(0,0,0,0.5);
-  border-radius: 10px; /* Mismo radio de las tarjetas de perfiles */
+  border-radius: 10px;
 }
 
-/* Al terminar la tirada, la nueva carta entra como una página que se da vuelta. */
 .cambio-pagina-carta {
   transform-origin: left center;
   animation: cambioPaginaCarta 520ms cubic-bezier(0.22, 0.85, 0.3, 1) both;
@@ -1312,9 +1364,8 @@ body:has(.vista-cinematica) {
   }
 }
 
-/* Transformamos la cabecera en la cinta característica de las cartas */
 .tarjeta-hud-organica.estilo-perfil .cabecera-tarjeta {
-  margin: 25px 0 10px 0; /* Despegado del borde superior */
+  margin: 25px 0 10px 0;
   border: none;
   padding: 8px;
 }
@@ -1323,7 +1374,7 @@ body:has(.vista-cinematica) {
   letter-spacing: 1px;
 }
 
-/* --- BOTONES CIRCULARES DE PEONES --- */
+/* BOTONES CIRCULARES DE PEONES */
 .btn-peon-circular {
   position: relative;
   background: transparent;
@@ -1427,7 +1478,7 @@ body:has(.vista-cinematica) {
 .peon-interactivo:focus-visible { outline: none; }
 
 
-/* --- SEPARADOR LUMINOSO --- */
+/* SEPARADOR LUMINOSO */
 .separador-moderno {
   width: 85%;
   height: 2px;
@@ -1454,13 +1505,12 @@ body:has(.vista-cinematica) {
   100% { left: 110%; opacity: 0; }
 }
 
-/* --- EFECTO TERMINAL (REVELADO DE TEXTO) --- */
+/* EFECTO TERMINAL */
 .typewriter-text {
   position: relative;
-  /* El clip-path hace un barrido revelando el texto de izquierda a derecha y de arriba abajo */
   clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
   animation: revelarTextoTerminal 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  animation-delay: 0.2s; /* Pequeño retraso para que el usuario note el efecto al abrir */
+  animation-delay: 0.2s;
 }
 
 @keyframes revelarTextoTerminal {

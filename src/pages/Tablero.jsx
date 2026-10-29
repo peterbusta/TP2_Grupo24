@@ -10,6 +10,7 @@ function Tablero() {
   const [resultadoDados, setResultadoDados] = useState(null);
   const [cierreRevelado, setCierreRevelado] = useState(false);
   const [versionTarjeta, setVersionTarjeta] = useState(0);
+  const [silenciado, setSilenciado] = useState(false);
 
   const [tarjetaActiva, setTarjetaActiva] = useState({
     tipo: 'equipo',
@@ -58,6 +59,13 @@ function Tablero() {
     }
   }, [tarjetaActiva]);
 
+  useEffect(() => {
+    if (versionTarjeta > 0 && !silenciado) {
+      const sonidoCarta = new Audio('/audio/carta.mp3');
+      sonidoCarta.volume = 0.3;
+      sonidoCarta.play().catch(error => console.log("Sonido bloqueado", error));
+    }
+  }, [versionTarjeta, silenciado]);
   const temasGamificados = {
     'HTML5': {
       subtitulo: 'La creatividad sin presupuesto',
@@ -169,6 +177,7 @@ function Tablero() {
     }
   };
 
+
   const casillas = [
     { id: 0, nombre: 'SALIDA', tipo: 'esquina', img: '/img/salida.png', row: 1, col: 1 },
     { id: 1, nombre: 'HTML5', tipo: 'propiedad', color: '#8b4513', row: 1, col: 2 },
@@ -218,6 +227,12 @@ function Tablero() {
   const tirarDados = () => {
     if (tirando) return;
     setTirando(true);
+
+    if (!silenciado) {
+      const sonidoDados = new Audio('/audio/dados.mp3');
+      sonidoDados.volume = 0.5;
+      sonidoDados.play().catch(error => console.log(error));
+    }
 
     setTimeout(() => {
       const d1 = Math.floor(Math.random() * 6) + 1;
@@ -276,6 +291,12 @@ function Tablero() {
   );
 
   const ejecutarAccionEspecial = () => {
+    if (!silenciado) { // Envolvemos el clic
+      const sonidoClic = new Audio('/audio/clic.mp3');
+      sonidoClic.volume = 0.5;
+      sonidoClic.play().catch(error => console.log(error));
+    }
+
     if (tarjetaActiva.externa) {
       window.open(tarjetaActiva.destino, '_blank', 'noopener,noreferrer');
       return;
@@ -287,6 +308,7 @@ function Tablero() {
     }
     navigate(tarjetaActiva.destino);
   };
+
 
   const sacarCarta = (tipo) => {
     const mazo = mazos[tipo];
@@ -312,6 +334,18 @@ function Tablero() {
 
   return (
     <div className="layout-devopoly">
+
+       {/* BOTÓN MUTE FLOTANTE */}
+      <button 
+        className="btn btn-dark position-fixed bottom-0 end-0 m-4 rounded-circle d-flex align-items-center justify-content-center shadow border-secondary"
+        style={{ width: '45px', height: '45px', zIndex: 1050, backgroundColor: 'rgba(11, 17, 24, 0.8)', backdropFilter: 'blur(5px)' }}
+        onClick={() => setSilenciado(!silenciado)}
+        title={silenciado ? "Activar sonido" : "Silenciar sonido"}
+      >
+        <span style={{ fontSize: '1.2rem' }}>{silenciado ? '🔇' : '🔊'}</span>
+      </button>
+
+      {/* CABECERA LIMPIA */}
       <div className="header-tablero text-center mb-2 w-100">
         <h1 className="titulo-neon font-oswald text-uppercase m-0">¡Bienvenidos a Devopoly!</h1>
         <p className="text-secondary fst-italic">Donde los bugs pagan alquiler y el código limpio gana la partida.</p>
@@ -450,7 +484,7 @@ function Tablero() {
             </div>
           </div>
 
-          {/* TARJETA HUD DINÁMICA UNIFICADA */}
+          {/* TARJETA HUD DINÁMICA */}
           {tarjetaActiva && (
             <div 
               key={versionTarjeta}
@@ -524,7 +558,15 @@ function Tablero() {
                     <button
                       type="button"
                       className={`btn-accion-especial cierre-deuda mt-auto ${cierreRevelado ? 'revelado' : ''}`}
-                      onClick={() => setCierreRevelado(!cierreRevelado)}
+                      onClick={() => {
+                        if (!cierreRevelado) {
+                          const sonidoCaja = new Audio('/audio/moneda.mp3');
+                          sonidoCaja.volume = 0.4;
+                          sonidoCaja.play().catch(e => console.log("Audio bloqueado", e));
+                        }
+                        
+                        setCierreRevelado(!cierreRevelado);
+                      }}
                       aria-expanded={cierreRevelado}
                     >
                       <span>{cierreRevelado ? getTema(tarjetaActiva.nombre).cierre : '✦ Revelar el costo real'}</span>

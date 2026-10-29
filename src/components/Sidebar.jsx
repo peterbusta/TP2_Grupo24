@@ -1,23 +1,42 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { Offcanvas, Button, Nav } from 'react-bootstrap';
+import { useState, useEffect } from 'react'; 
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { Offcanvas, Button, Nav, Collapse } from 'react-bootstrap';
 import '../styles.css';
 
 function Sidebar() {
   const [show, setShow] = useState(false);
+  const [showPerfiles, setShowPerfiles] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (location.pathname === '/perfiles') {
+      setShowPerfiles(true);
+    }
+  }, [location.pathname]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const links = [
-    { path: '/', label: 'Portada del equipo' },
-    { path: '/perfiles', label: 'Perfiles jugadores' },
-    { path: '/herramientas', label: 'Datos locales (JSON)' },
-    { path: '/api', label: 'API pública' },
-    { path: '/arbol', label: 'Árbol de componentes' },
+    { path: '/', label: 'Portada' },
+    { path: '/herramientas', label: 'Datos (JSON)' },
+    { path: '/api', label: 'API Pública' },
+    { path: '/arbol', label: 'Componentes' },
     { path: '/bitacora', label: 'Bitácora' },
     { path: '/contacto', label: 'Contacto' },
   ];
+
+  const integrantes = ['Flavia', 'Brian', 'Ludmila', 'Pedro'];
+
+  const handlePerfilesClick = () => {
+    if (location.pathname !== '/perfiles' || location.state?.jugador) {
+      navigate('/perfiles', { state: null });
+      setShowPerfiles(true);
+    } else {
+      setShowPerfiles(!showPerfiles);
+    }
+  };
 
   return (
     <>
@@ -36,41 +55,106 @@ function Sidebar() {
         className="sidebar-devopoly d-flex flex-column" 
         style={{ width: '280px' }}
       >
-        <Offcanvas.Header closeButton closeVariant="white">
+        <Offcanvas.Header closeButton closeVariant="white" className="border-bottom border-secondary">
           <Offcanvas.Title>
             <img src="/img/logo.png" alt="Devopoly Logo" style={{ height: '35px' }} />
           </Offcanvas.Title>
         </Offcanvas.Header>
         
-        <Offcanvas.Body className="d-flex flex-column p-0 overflow-hidden">
-          <div className="d-none d-md-flex flex-column align-items-center mt-5 mb-3 pb-2 mx-3">
-             <img src="/img/logo.png" alt="Devopoly Logo" className="img-fluid logo-3d" style={{ maxHeight: '95px' }} />
+        <Offcanvas.Body className="d-flex flex-column p-0">
+          
+          <div className="d-none d-md-flex flex-column align-items-center mt-4 mb-2 pb-2 mx-3">
+             <img src="/img/logo.png" alt="Devopoly Logo" className="img-fluid logo-3d" style={{ maxHeight: '85px' }} />
           </div>
           
-          <Nav className="flex-column px-4 mt-2 gap-3">
-            {links.map((link) => (
+          <Nav className="flex-column px-3 mt-2 gap-2 flex-grow-1">
+            
+            <NavLink
+              to="/"
+              className={({ isActive }) => `nav-link-custom text-decoration-none ${isActive ? 'active' : ''}`}
+              onClick={handleClose}
+            >
+              <span className="nav-link-inner">Portada</span>
+            </NavLink>
+
+            {/* LINK 2: perfiles con submenú */}
+            <div className="nav-item-group d-flex flex-column" style={{ gap: '2px' }}>
+              
+              {/* Botón padre */}
+              <div 
+                className={`nav-link-custom cursor-pointer text-decoration-none ${location.pathname === '/perfiles' ? 'active' : ''}`}
+                onClick={handlePerfilesClick}
+              >
+                <div className="nav-link-inner d-flex justify-content-between align-items-center">
+                  <span>Perfiles</span>
+                  <span 
+                    className="text-secondary fw-bold"
+                    style={{ 
+                      fontSize: '0.7rem', 
+                      transition: 'transform 0.3s ease', 
+                      transform: showPerfiles ? 'rotate(180deg)' : 'rotate(0deg)'
+                    }}
+                  >
+                    ▼
+                  </span>
+                </div>
+              </div>
+              
+              {/* Submenú de integrantes */}
+              <Collapse in={showPerfiles}>
+                <div className="px-4 pt-1 pb-2">
+                  {integrantes.map(nombre => {
+                    const isSubActive = location.state?.jugador === nombre;
+                    return (
+                      <NavLink
+                        key={nombre}
+                        to="/perfiles"
+                        state={{ jugador: nombre }} 
+                        className={() => `nav-link-custom text-decoration-none submenu-rebelde ${isSubActive ? 'active' : ''}`}
+                        onClick={handleClose}
+                      >
+                        <span className="nav-link-inner-compact">{nombre}</span>
+                      </NavLink>
+                    );
+                  })}
+                </div>
+              </Collapse>
+            </div>
+
+            {/* RESTO DE LINKS */}
+            {links.filter(l => l.path !== '/').map((link) => (
               <NavLink
                 to={link.path}
                 key={link.path}
                 className={({ isActive }) => `nav-link-custom text-decoration-none ${isActive ? 'active' : ''}`}
                 onClick={handleClose}
               >
-                {}
                 <span className="nav-link-inner">{link.label}</span>
               </NavLink>
             ))}
           </Nav>
 
-          {}
-          <div className="sidebar-footer mt-auto p-4 text-center">
-            <a href="https://github.com/peterbusta/TP2_Grupo24" target="_blank" rel="noopener noreferrer" className="github-link mb-2 d-inline-block" aria-label="Abrir repositorio del proyecto en GitHub">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-              </svg>
-            </a>
-            <p className="footer-text m-0 mt-1">© 2026 Devopoly</p>
-            <p className="footer-subtext m-0">Todos los derechos reservados.</p>
-          </div>
+          {/* FOOTER */}
+      <div 
+        className="mt-5 pt-4 pb-3 w-100 text-center d-flex flex-column align-items-center" 
+        style={{ borderTop: '1px solid rgba(255, 255, 255, 0.05)' }} 
+      >
+        <a 
+          href="https://github.com/peterbusta/TP2_Grupo24" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-secondary text-decoration-none mb-2 hover-brillo"
+          style={{ transition: 'all 0.3s ease' }}
+        >
+          <i className="bi bi-github fs-5 opacity-75"></i>
+        </a>
+        <small className="d-block text-secondary fw-medium" style={{ fontSize: '0.75rem', letterSpacing: '0.5px' }}>
+          © 2026 Devopoly
+        </small>
+        <small className="d-block text-secondary opacity-50 mt-1" style={{ fontSize: '0.7rem' }}>
+          Todos los derechos reservados.
+        </small>
+      </div>
         </Offcanvas.Body>
       </Offcanvas>
     </>

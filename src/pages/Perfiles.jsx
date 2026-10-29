@@ -1,126 +1,128 @@
-import { useState, useEffect } from 'react'; // Unificamos los imports de React
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import '../styles.css';
 
+const equipo = [
+  {
+    id: 1,
+    nombre: 'FLAVIA BERZUINI',
+    rol: 'DESARROLLADORA',
+    color: '#9b59b6',
+    logo: '/img/sombrero.png',
+    avatar: '/img/avatar-flavia.png',
+    videoTransformacion: '/img/flavia_transformacion.mp4',
+    ubicacion: 'Mendoza, Argentina',
+    edad: 43,
+    caracteristica: 'Cobra alquiler por cada píxel desalineado.',
+    tecnologias: [
+      { nivel: 'Renta', nombre: 'HTML / CSS', casitas: 0 },
+      { nivel: 'Renta con grupo de color', nombre: 'JavaScript', casitas: 0 },
+      { nivel: 'Renta con 1 Casa', nombre: 'Figma / UI Design', casitas: 1 },
+      { nivel: 'Renta con 2 Casas', nombre: 'Git / GitHub', casitas: 2 },
+      { nivel: 'Renta con 3 Casas', nombre: 'Node.js / Express', casitas: 3 },
+      { nivel: 'Renta con 4 Casas', nombre: 'Kotlin / Android', casitas: 4 },
+      { nivel: 'Renta con 1 Hotel', nombre: 'AWS Cloud', hotel: true }
+    ],
+    peliculas: [
+      { titulo: 'Avengers: Infinity War', url: 'https://www.youtube.com/embed/6ZfuNTqbHE8?si=Z6W5rU-aFh64V-L3' },
+      { titulo: 'Black Panther', url: 'https://www.youtube.com/embed/xjDjIWPwcPU?si=3vK_P8eH7rT2G9nK' },
+      { titulo: 'Esperando la carroza', url: 'https://www.youtube.com/embed/DgZQwmjdcp8' }
+    ],
+    discos: [
+      { album: 'Libertinaje', cancion: 'Vuelos - Bersuit', pista: '/audio/vuelos.mp3' },
+      { album: 'Fuerza Natural', cancion: 'Cactus - Cerati', pista: '/audio/cactus.mp3' },
+      { album: 'Oktubre', cancion: 'Jijiji - Los Redondos', pista: '/audio/redondos.mp3' }
+    ]
+  },
+  {
+    id: 2,
+    nombre: 'BRIAN SABIO',
+    rol: 'DESARROLLADOR',
+    color: '#1e3799',
+    logo: '/img/perro.png',
+    avatar: '/img/avatar-brian.png',
+    ubicacion: 'La Plata, Argentina',
+    edad: 28,
+    caracteristica: 'Si saca un doble, refactoriza todo el tablero.',
+    tecnologias: [
+      { nivel: 'Renta', nombre: 'React', casitas: 0 },
+      { nivel: 'Renta con grupo de color', nombre: 'Vite', casitas: 0 },
+      { nivel: 'Renta con 1 Casa', nombre: 'Bootstrap', casitas: 1 },
+      { nivel: 'Renta con 2 Casas', nombre: 'CSS Avanzado', casitas: 2 },
+      { nivel: 'Renta con 3 Casas', nombre: 'REST APIs', casitas: 3 },
+      { nivel: 'Renta con 4 Casas', nombre: 'MongoDB', casitas: 4 },
+      { nivel: 'Renta con 1 Hotel', nombre: 'Docker', hotel: true }
+    ]
+  },
+  {
+    id: 3,
+    nombre: 'LUDMILA QUIROZ',
+    rol: 'DESARROLLADORA',
+    color: '#2ecc71',
+    logo: '/img/dedal.png',
+    avatar: '/img/avatar-ludmila.png',
+    ubicacion: 'CABA, Argentina',
+    edad: 25,
+    caracteristica: 'Dueña del backend y de los ferrocarriles.',
+    tecnologias: [
+      { nivel: 'Renta', nombre: 'Python', casitas: 0 },
+      { nivel: 'Renta con grupo de color', nombre: 'Django', casitas: 0 },
+      { nivel: 'Renta con 1 Casa', nombre: 'SQL', casitas: 1 },
+      { nivel: 'Renta con 2 Casas', nombre: 'PostgreSQL', casitas: 2 },
+      { nivel: 'Renta con 3 Casas', nombre: 'Linux', casitas: 3 },
+      { nivel: 'Renta con 4 Casas', nombre: 'Bash', casitas: 4 },
+      { nivel: 'Renta con 1 Hotel', nombre: 'AWS EC2', hotel: true }
+    ]
+  },
+  {
+    id: 4,
+    nombre: 'PEDRO BUSTAMANTE',
+    rol: 'DESARROLLADOR',
+    color: '#f39c12',
+    logo: '/img/auto.png',
+    avatar: '/img/avatar-pedro.png',
+    ubicacion: 'La Plata, Argentina',
+    edad: 35,
+    caracteristica: 'Mantiene el monopolio de los componentes Java.',
+    tecnologias: [
+      { nivel: 'Renta', nombre: 'Java', casitas: 0 },
+      { nivel: 'Renta con grupo de color', nombre: 'Spring Boot', casitas: 0 },
+      { nivel: 'Renta con 1 Casa', nombre: 'Angular', casitas: 1 },
+      { nivel: 'Renta con 2 Casas', nombre: 'TypeScript', casitas: 2 },
+      { nivel: 'Renta con 3 Casas', nombre: 'RxJS', casitas: 3 },
+      { nivel: 'Renta con 4 Casas', nombre: 'Jira', casitas: 4 },
+      { nivel: 'Renta con 1 Hotel', nombre: 'Scrum', hotel: true }
+    ]
+  }
+];
+
 function Perfiles() {
   const location = useLocation();
-  const [jugadorActivo, setJugadorActivo] = useState(null);
+  
+  const [jugadorActivo, setJugadorActivo] = useState(() => {
+    if (location.state && location.state.jugador) {
+      return equipo.find(j => j.nombre.includes(location.state.jugador.toUpperCase())) || null;
+    }
+    return null;
+  });
+
   const [suerteIndex, setSuerteIndex] = useState(-1);
   const [arcaIndex, setArcaIndex] = useState(-1);
   const [reaccionesSuerte, setReaccionesSuerte] = useState([]);
   const [reaccionesArca, setReaccionesArca] = useState([]);
 
-  const equipo = [
-    {
-      id: 1,
-      nombre: 'FLAVIA BERZUINI',
-      rol: 'DESARROLLADORA',
-      color: '#9b59b6',
-      logo: '/img/sombrero.png',
-      avatar: '/img/avatar-flavia.png',
-      videoTransformacion: '/img/flavia_transformacion.mp4',
-      ubicacion: 'Mendoza, Argentina',
-      edad: 43,
-      caracteristica: 'Cobra alquiler por cada píxel desalineado.',
-      tecnologias: [
-        { nivel: 'Renta', nombre: 'HTML / CSS', casitas: 0 },
-        { nivel: 'Renta con grupo de color', nombre: 'JavaScript', casitas: 0 },
-        { nivel: 'Renta con 1 Casa', nombre: 'Figma / UI Design', casitas: 1 },
-        { nivel: 'Renta con 2 Casas', nombre: 'Git / GitHub', casitas: 2 },
-        { nivel: 'Renta con 3 Casas', nombre: 'Node.js / Express', casitas: 3 },
-        { nivel: 'Renta con 4 Casas', nombre: 'Kotlin / Android', casitas: 4 },
-        { nivel: 'Renta con 1 Hotel', nombre: 'AWS Cloud', hotel: true }
-      ],
-      peliculas: [
-        { titulo: 'Avengers: Infinity War', url: 'https://www.youtube.com/embed/6ZfuNTqbHE8?si=Z6W5rU-aFh64V-L3' },
-        { titulo: 'Black Panther', url: 'https://www.youtube.com/embed/xjDjIWPwcPU?si=3vK_P8eH7rT2G9nK' },
-        { titulo: 'Esperando la carroza', url: 'https://www.youtube.com/embed/DgZQwmjdcp8' }
-      ],
-      discos: [
-        { album: 'Libertinaje', cancion: 'Vuelos - Bersuit', pista: '/audio/vuelos.mp3' },
-        { album: 'Fuerza Natural', cancion: 'Cactus - Cerati', pista: '/audio/cactus.mp3' },
-        { album: 'Oktubre', cancion: 'Jijiji - Los Redondos', pista: '/audio/redondos.mp3' }
-      ]
-    },
-    {
-      id: 2,
-      nombre: 'BRIAN SABIO',
-      rol: 'DESARROLLADOR',
-      color: '#1e3799',
-      logo: '/img/perro.png',
-      avatar: '/img/avatar-brian.png',
-      ubicacion: 'La Plata, Argentina',
-      edad: 28,
-      caracteristica: 'Si saca un doble, refactoriza todo el tablero.',
-      tecnologias: [
-        { nivel: 'Renta', nombre: 'React', casitas: 0 },
-        { nivel: 'Renta con grupo de color', nombre: 'Vite', casitas: 0 },
-        { nivel: 'Renta con 1 Casa', nombre: 'Bootstrap', casitas: 1 },
-        { nivel: 'Renta con 2 Casas', nombre: 'CSS Avanzado', casitas: 2 },
-        { nivel: 'Renta con 3 Casas', nombre: 'REST APIs', casitas: 3 },
-        { nivel: 'Renta con 4 Casas', nombre: 'MongoDB', casitas: 4 },
-        { nivel: 'Renta con 1 Hotel', nombre: 'Docker', hotel: true }
-      ]
-    },
-    {
-      id: 3,
-      nombre: 'LUDMILA QUIROZ',
-      rol: 'DESARROLLADORA',
-      color: '#2ecc71',
-      logo: '/img/dedal.png',
-      avatar: '/img/avatar-ludmila.png',
-      ubicacion: 'CABA, Argentina',
-      edad: 25,
-      caracteristica: 'Dueña del backend y de los ferrocarriles.',
-      tecnologias: [
-        { nivel: 'Renta', nombre: 'Python', casitas: 0 },
-        { nivel: 'Renta con grupo de color', nombre: 'Django', casitas: 0 },
-        { nivel: 'Renta con 1 Casa', nombre: 'SQL', casitas: 1 },
-        { nivel: 'Renta con 2 Casas', nombre: 'PostgreSQL', casitas: 2 },
-        { nivel: 'Renta con 3 Casas', nombre: 'Linux', casitas: 3 },
-        { nivel: 'Renta con 4 Casas', nombre: 'Bash', casitas: 4 },
-        { nivel: 'Renta con 1 Hotel', nombre: 'AWS EC2', hotel: true }
-      ]
-    },
-    {
-      id: 4,
-      nombre: 'PEDRO BUSTAMANTE',
-      rol: 'DESARROLLADOR',
-      color: '#f39c12',
-      logo: '/img/auto.png',
-      avatar: '/img/avatar-pedro.png',
-      ubicacion: 'La Plata, Argentina',
-      edad: 35,
-      caracteristica: 'Mantiene el monopolio de los componentes Java.',
-      tecnologias: [
-        { nivel: 'Renta', nombre: 'Java', casitas: 0 },
-        { nivel: 'Renta con grupo de color', nombre: 'Spring Boot', casitas: 0 },
-        { nivel: 'Renta con 1 Casa', nombre: 'Angular', casitas: 1 },
-        { nivel: 'Renta con 2 Casas', nombre: 'TypeScript', casitas: 2 },
-        { nivel: 'Renta con 3 Casas', nombre: 'RxJS', casitas: 3 },
-        { nivel: 'Renta con 4 Casas', nombre: 'Jira', casitas: 4 },
-        { nivel: 'Renta con 1 Hotel', nombre: 'Scrum', hotel: true }
-      ]
-    }
-  ];
-
-useEffect(() => {
-    // Si llegamos a esta vista y traemos un "estado" desde React Router...
+  useEffect(() => {
     if (location.state && location.state.jugador) {
-      // El nombre que mandamos desde Tablero era, por ej, "Flavia".
-      // En Perfiles lo tenés guardado como "FLAVIA BERZUINI", así que buscamos que incluya el nombre.
+      
       const jugadorEncontrado = equipo.find(j => j.nombre.includes(location.state.jugador.toUpperCase()));
       
       if (jugadorEncontrado) {
-        // Abrimos automáticamente el panel de ese jugador
         setJugadorActivo(jugadorEncontrado);
-        
-        // Limpiamos el estado de la ruta para que si el usuario recarga la página, 
-        // no se vuelva a auto-abrir la tarjeta
-        window.history.replaceState({}, document.title)
       }
+      
+      window.history.replaceState({}, document.title);
     }
-  }, [location]); // Dependencia: se ejecuta cada vez que cambia la ruta
+  }, [location.state]);
 
   const currentIndex = jugadorActivo ? equipo.findIndex(j => j.id === jugadorActivo.id) : -1;
   const prevJugador = currentIndex >= 0 ? equipo[(currentIndex - 1 + equipo.length) % equipo.length] : null;
@@ -203,23 +205,26 @@ useEffect(() => {
         <p className="text-secondary">Elegí una carta para revelar a su desarrollador</p>
       </div>
       
-      <div className="mesa-cartas mt-4">
-        {equipo.map(jugador => (
-          <div key={jugador.id} className="carta-contenedor" style={{ '--color-jugador': jugador.color }} onClick={() => cambiarJugador(jugador)}>
-            <img src={jugador.avatar} alt="Avatar" className="avatar-escondido" />
-            <div className="carta-esparcida">
-              <div className="w-100 p-2 mb-3" style={{ backgroundColor: jugador.color }}>
-                <small className="d-block text-white fw-bold text-uppercase" style={{ fontSize: '0.65rem' }}>TÍTULO DE {jugador.rol}</small>
+      {/* 1. SOLO mostramos las 4 cartas si NO hay nadie seleccionado */}
+      {!jugadorActivo && (
+        <div className="mesa-cartas mt-4">
+          {equipo.map(jugador => (
+            <div key={jugador.id} className="carta-contenedor" style={{ '--color-jugador': jugador.color }} onClick={() => cambiarJugador(jugador)}>
+              <img src={jugador.avatar} alt="Avatar" className="avatar-escondido" />
+              <div className="carta-esparcida">
+                <div className="w-100 p-2 mb-3" style={{ backgroundColor: jugador.color }}>
+                  <small className="d-block text-white fw-bold text-uppercase" style={{ fontSize: '0.65rem' }}>TÍTULO DE {jugador.rol}</small>
+                </div>
+                <img src={jugador.logo} alt="Ficha" style={{ width: '80px', filter: 'drop-shadow(0 5px 5px rgba(0,0,0,0.5))' }} />
+                <h3 className="text-white mt-4 fs-5 px-2 font-oswald">{jugador.nombre}</h3>
+                <p className="small mt-3 px-3 fst-italic" style={{ color: '#aeb5be', lineHeight: '1.2' }}>
+                  "{jugador.caracteristica}"
+                </p>
               </div>
-              <img src={jugador.logo} alt="Ficha" style={{ width: '80px', filter: 'drop-shadow(0 5px 5px rgba(0,0,0,0.5))' }} />
-              <h3 className="text-white mt-4 fs-5 px-2 font-oswald">{jugador.nombre}</h3>
-              <p className="small mt-3 px-3 fst-italic" style={{ color: '#aeb5be', lineHeight: '1.2' }}>
-                "{jugador.caracteristica}"
-              </p>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
 
       {jugadorActivo && (
         <div className="vista-cinematica">
