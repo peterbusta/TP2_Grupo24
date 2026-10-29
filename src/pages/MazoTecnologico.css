@@ -1,0 +1,196 @@
+/* Las cartas tienen su propio CSS en components/CartaRecurso.css */
+
+.mazo-tecnologico {
+  --mazo-panel: rgba(25, 35, 46, 0.8);
+  --mazo-texto: #f3f5f7;
+  --mazo-secundario: #aab5c2;
+  --mazo-dorado: #e7bd63;
+
+  width: 100%;
+  min-width: 0;
+  padding: clamp(16px, 3vw, 32px);
+  color: var(--mazo-texto);
+  container-type: inline-size; /* las columnas de cartas dependen del ancho de esta sección */
+}
+
+/* ENCABEZADO: texto centrado como la portada, con la pila de cartas a la izquierda */
+.mazo-encabezado {
+  display: grid;
+  grid-template-columns: 138px minmax(0, 1fr) 138px;
+  align-items: center;
+  gap: clamp(12px, 3vw, 32px);
+  margin-bottom: 28px;
+}
+
+.mazo-pila {
+  position: relative;
+  width: 118px;
+  height: 160px;
+  margin: 6px 10px 0 10px;
+}
+
+.mazo-pila > span {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #fff;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #161b22, #0b1118);
+  box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.45);
+}
+
+.mazo-pila > span:nth-child(1) { transform: rotate(-9deg) translateX(-10px); border-color: #8b4513; }
+.mazo-pila > span:nth-child(2) { transform: rotate(7deg) translateX(10px); border-color: #87ceeb; }
+.mazo-pila > span:nth-child(3) { transform: rotate(-1deg); }
+.mazo-pila img { width: 88%; height: auto; max-height: 100%; object-fit: contain; }
+
+.mazo-encabezado-texto { min-width: 0; text-align: center; }
+.mazo-sello { margin: 0 0 6px; color: var(--mazo-dorado); font-size: 0.72rem; font-weight: 800; letter-spacing: 1.5px; }
+.mazo-bajada { max-width: 62ch; margin: 8px auto 0; line-height: 1.6; }
+
+/* FILTROS */
+.mazo-filtros {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(180px, 1fr);
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.mazo-buscador, .mazo-selector { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+.mazo-buscador span, .mazo-selector span { color: var(--mazo-secundario); font-size: 0.8rem; font-weight: 650; }
+
+.mazo-buscador input, .mazo-selector select {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid #394756;
+  border-radius: 8px;
+  background: var(--mazo-panel);
+  color: var(--mazo-texto);
+  font: inherit;
+}
+
+.mazo-buscador input:focus, .mazo-selector select:focus {
+  border-color: var(--mazo-dorado);
+  outline: 2px solid rgba(231, 189, 99, 0.2);
+  outline-offset: 1px;
+}
+
+/* CHIPS DE COLOR: clasifican el mazo igual que los grupos del tablero */
+.mazo-grupos { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.mazo-chip {
+  --chip-color: #e7bd63;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 6px 14px;
+  border: 1px solid #394756;
+  border-radius: 999px;
+  background: var(--mazo-panel);
+  color: var(--mazo-texto);
+  font-size: 0.84rem;
+  cursor: pointer;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.mazo-chip small { color: var(--mazo-secundario); font-size: 0.72rem; }
+.mazo-chip:hover { border-color: var(--chip-color); }
+
+.mazo-chip.activo {
+  border-color: var(--chip-color);
+  background: color-mix(in srgb, var(--chip-color) 24%, transparent);
+  color: #fff;
+}
+
+.mazo-chip:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+.mazo-chip-punto {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--chip-color);
+  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.75);
+}
+
+.mazo-barra { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 16px 0 20px; min-height: 36px; }
+.mazo-contador { margin: 0; color: var(--mazo-secundario); font-size: 0.82rem; }
+
+.mazo-restablecer {
+  padding: 6px 14px;
+  border: 1px solid var(--mazo-dorado);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--mazo-texto);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.mazo-restablecer:hover { background: var(--mazo-dorado); color: #111820; }
+.mazo-restablecer:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+/* GRILLA DE CARTAS: 1, 2, 3 o 4 por fila según el ancho de la sección.
+   Cada carta mide como máximo 340 px (el tamaño de la tarjeta del tablero) y se achica sola. */
+.mazo-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 340px);
+  justify-content: center;
+  gap: 26px 20px;
+  align-items: start;
+  padding-bottom: 24px;
+}
+
+@container (min-width: 560px)  { .mazo-grid { grid-template-columns: repeat(2, minmax(0, 340px)); } }
+@container (min-width: 830px)  { .mazo-grid { grid-template-columns: repeat(3, minmax(0, 340px)); } }
+@container (min-width: 1100px) { .mazo-grid { grid-template-columns: repeat(4, minmax(0, 340px)); } }
+
+/* ESTADOS: carga, error y sin resultados */
+.mazo-estado, .mazo-vacio {
+  margin: auto;
+  padding: 32px 20px;
+  border: 1px solid #34404d;
+  border-radius: 12px;
+  background: var(--mazo-panel);
+  color: var(--mazo-texto);
+  text-align: center;
+}
+
+.mazo-estado p, .mazo-vacio p { color: var(--mazo-secundario); }
+.mazo-dado { display: inline-block; color: var(--mazo-dorado); font-size: 2.5rem; animation: barajar-dado 900ms ease-in-out infinite alternate; }
+
+.mazo-estado button, .mazo-vacio button {
+  margin-top: 10px;
+  padding: 9px 14px;
+  border: 1px solid var(--mazo-dorado);
+  border-radius: 7px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.mazo-estado button:hover, .mazo-vacio button:hover { background: var(--mazo-dorado); color: #111820; }
+
+@keyframes barajar-dado {
+  from { transform: rotate(-12deg) translateY(0); }
+  to { transform: rotate(12deg) translateY(-5px); }
+}
+
+@media (max-width: 900px) {
+  .mazo-encabezado { grid-template-columns: minmax(0, 1fr); }
+  .mazo-pila { display: none; }
+}
+
+@media (max-width: 650px) {
+  .mazo-encabezado { grid-template-columns: minmax(0, 1fr); }
+  .mazo-pila { display: none; }
+  .mazo-filtros { grid-template-columns: minmax(0, 1fr); }
+  .mazo-tecnologico { padding: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mazo-dado { animation: none; }
+}

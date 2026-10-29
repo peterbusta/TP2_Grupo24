@@ -20,7 +20,7 @@ function Sidebar() {
 
   const links = [
     { path: '/', label: 'Portada' },
-    { path: '/herramientas', label: 'Datos (JSON)' },
+    { path: '/datos', label: 'Mazo Tecnológico' },
     { path: '/api', label: 'API Pública' },
     { path: '/arbol', label: 'Componentes' },
     { path: '/bitacora', label: 'Bitácora' },

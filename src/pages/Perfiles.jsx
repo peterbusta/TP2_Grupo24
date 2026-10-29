@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import '../styles.css';
+import { useSilencio } from '../context/SilencioContext.jsx';
 
 const equipo = [
   {
@@ -98,6 +99,7 @@ const equipo = [
 
 function Perfiles() {
   const location = useLocation();
+  const { silenciado } = useSilencio();
   
   const [jugadorActivo, setJugadorActivo] = useState(() => {
     if (location.state && location.state.jugador) {
@@ -300,6 +302,7 @@ function Perfiles() {
                           <div className="w-100 d-flex align-items-center justify-content-center" style={{ height: '95px' }}>
                             <audio 
                               controls 
+                              muted={silenciado} 
                               controlsList="nodownload noplaybackrate" 
                               className="w-100" 
                               style={{ height: '40px', outline: 'none' }}

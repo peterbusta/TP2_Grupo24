@@ -1,0 +1,224 @@
+/*
+  CartaRecurso
+  Reutiliza las clases del tablero definidas en styles.css:
+  .cabecera-tarjeta, .cabecera-propiedad, .titulo-tarjeta, .tabla-deudas, .fila-deuda,
+  .etiqueta-deuda, .pago-deuda, .simbolo-moneda, .icono-casa, .btn-accion-especial, .cierre-deuda
+
+  La carta tiene la proporción de la tarjeta del tablero (338 x 420) y todo su contenido se
+  mide en cqw (1cqw = 1% del ancho de la carta). Así se achica o agranda completa, sin cortarse,
+  según cuántas cartas entren por fila.
+*/
+
+.carta-recurso {
+  --color-tarjeta: #f39c12;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 338 / 420;
+  min-width: 0;
+  container-type: inline-size;
+  perspective: 1100px;
+  animation: carta-entra 420ms ease backwards;
+  animation-delay: calc(min(var(--orden, 0), 11) * 35ms);
+}
+
+@keyframes carta-entra {
+  from { opacity: 0; transform: translateY(14px) rotate(-1.5deg); }
+}
+
+.carta-interior {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 600ms cubic-bezier(0.22, 0.85, 0.3, 1);
+}
+
+.carta-recurso.volteada .carta-interior { transform: rotateY(180deg); }
+
+/* Marco igual al de la tarjeta del tablero (estilo-perfil) */
+.carta-cara {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 4px solid #fff;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #161b22, #0b1118);
+  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.5);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: box-shadow 200ms ease;
+}
+
+.carta-dorso { transform: rotateY(180deg); }
+
+/* La cara que no se ve sale del orden de tabulación y de los lectores de pantalla */
+.carta-recurso:not(.volteada) .carta-dorso,
+.carta-recurso.volteada .carta-frente {
+  visibility: hidden;
+  transition: visibility 0s linear 300ms;
+}
+
+/* El resplandor usa el color del grupo */
+.carta-recurso:hover .carta-cara {
+  box-shadow: 0 0 0 1px var(--color-tarjeta), 0 14px 32px color-mix(in srgb, var(--color-tarjeta) 40%, transparent);
+}
+
+/* ENCABEZADO (reemplaza medidas fijas del tablero por medidas proporcionales) */
+.carta-cara .cabecera-tarjeta.cabecera-propiedad {
+  min-height: 21cqw;
+  margin: 11.5cqw 0 3cqw;
+  padding: 2.2cqw 2cqw !important;
+}
+
+.carta-cara .titulo-tarjeta { font-size: 5.4cqw; }
+
+.carta-subtitulo {
+  margin-top: 1cqw;
+  color: #fff;
+  opacity: 0.92;
+  font-size: 4.2cqw;
+  font-style: italic;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: none;
+}
+
+/* Franja superior: grupo a la izquierda, botón de giro a la derecha */
+.carta-grupo {
+  position: absolute;
+  top: 2.4cqw;
+  left: 3.4cqw;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 1.8cqw;
+  height: 6.4cqw;
+  color: color-mix(in srgb, var(--color-tarjeta) 45%, white);
+  font-size: max(9px, 3.4cqw);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.carta-grupo::before {
+  content: "";
+  width: 2.8cqw;
+  height: 2.8cqw;
+  border-radius: 50%;
+  background: var(--color-tarjeta);
+  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.8);
+}
+
+.carta-girar {
+  position: absolute;
+  top: 2.4cqw;
+  right: 3cqw;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 1.4cqw;
+  height: 6.4cqw;
+  padding: 0 3cqw;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-tarjeta) 32%, #0b1118);
+  color: #fff;
+  font-size: max(9px, 3.4cqw);
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.carta-girar-icono { font-size: 1.35em; line-height: 1; }
+
+.carta-girar:hover,
+.carta-girar:focus-visible {
+  background: color-mix(in srgb, var(--color-tarjeta) 60%, #0b1118);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--color-tarjeta) 60%, transparent);
+  transform: scale(1.05);
+  outline: none;
+}
+
+.carta-girar:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+/* CUERPO */
+.carta-cuerpo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 1.8cqw 4.7cqw 4.7cqw;
+}
+
+.carta-cara .fila-deuda {
+  min-height: 9.2cqw;
+  padding: 0.9cqw 0;
+  gap: 1.8cqw;
+}
+
+.carta-cara .etiqueta-deuda { font-size: 3.2cqw; }
+.carta-cara .pago-deuda { font-size: 3.6cqw; }
+
+.carta-cara .etiqueta-deuda .icono-casa {
+  width: 3.5cqw;
+  height: 3.5cqw;
+  margin-right: 0.6cqw !important;
+}
+
+.carta-cara .cierre-deuda {
+  min-height: 13cqw;
+  margin-top: 4.7cqw !important;
+  padding: 2cqw 3cqw;
+  font-size: 3.7cqw;
+}
+
+/* El ₩ y los títulos del dorso usan una versión clara del color para que se lean también en el azul */
+.carta-recurso .simbolo-moneda { color: color-mix(in srgb, var(--color-tarjeta) 55%, white); }
+
+/* DORSO */
+.carta-dato-titulo {
+  margin: 2.4cqw 0 1cqw;
+  color: color-mix(in srgb, var(--color-tarjeta) 55%, white);
+  font-family: 'Oswald', sans-serif;
+  font-size: 4.2cqw;
+  letter-spacing: 0.5px;
+}
+
+.carta-dato {
+  margin: 0;
+  color: #d7dee7;
+  font-size: 4.1cqw;
+  line-height: 1.4;
+}
+
+.carta-precio {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: auto;
+  padding-top: 2.6cqw;
+  border-top: 1px solid rgba(174, 181, 190, 0.18);
+  color: #aeb5be;
+  font-size: 3.6cqw;
+}
+
+.carta-precio strong { color: #fff; font-size: 5cqw; }
+
+.carta-sello {
+  flex: 0 1 auto;
+  align-self: center;
+  width: auto;
+  min-height: 0;
+  max-width: 70%;
+  max-height: 9cqw;
+  margin-top: 2.6cqw;
+  object-fit: contain;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carta-recurso { animation: none; }
+  .carta-interior { transition: none; }
+  .carta-girar { transition: none; }
+}

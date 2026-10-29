@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1, "nombre": "HTML5", "grupo": "Marrón", "categoria": "Cimientos", "color": "#8b4513", "precio": 60,
+    "subtitulo": "La creatividad sin presupuesto",
+    "valores": ["Un mate", "Un favor", "Un recreo", "La paciencia", "El finde", "Tu paz mental"],
+    "cierre": "Era una página sencilla. Ahora tiene 14 secciones.",
+    "descripcion": "Define la estructura semántica de las páginas web.",
+    "uso": "Organizar el contenido de la interfaz."
+  },
+  {
+    "id": 2, "nombre": "CSS3", "grupo": "Marrón", "categoria": "Cimientos", "color": "#8b4513", "precio": 60,
+    "subtitulo": "La perfección visual",
+    "valores": ["Dos píxeles", "Un retoque", "Un cafecito", "Una tarde", "El domingo", "Tu estabilidad"],
+    "cierre": "Era solamente cambiar un color. Hace tres horas.",
+    "descripcion": "Permite diseñar y dar estilo a la interfaz.",
+    "uso": "Colores, tipografías, animaciones y tarjetas."
+  },
+  {
+    "id": 3, "nombre": "Flexbox", "grupo": "Marrón", "categoria": "Cimientos", "color": "#8b4513", "precio": 70,
+    "subtitulo": "Todo alineado, menos la agenda",
+    "valores": ["Un gap", "Un wrap", "Un justify", "Un align", "Una tarde", "Centrar un div"],
+    "cierre": "El div quedó centrado. Todo lo demás, no.",
+    "descripcion": "Sistema de distribución flexible en una dimensión.",
+    "uso": "Alinear tarjetas, botones y elementos de navegación."
+  },
+  {
+    "id": 4, "nombre": "GitHub", "grupo": "Celeste", "categoria": "Equipo", "color": "#87ceeb", "precio": 100,
+    "subtitulo": "La memoria colectiva del equipo",
+    "valores": ["Un mensaje", "Un commit", "Una explicación", "Una captura", "Una madrugada", "La evidencia"],
+    "cierre": "Último commit: ahora sí funciona. No lo abras.",
+    "descripcion": "Plataforma para alojar repositorios y colaborar.",
+    "uso": "Compartir el código y revisar cambios del equipo."
+  },
+  {
+    "id": 5, "nombre": "Git", "grupo": "Celeste", "categoria": "Equipo", "color": "#87ceeb", "precio": 120,
+    "subtitulo": "El viaje de ida y vuelta",
+    "valores": ["Un commit", "Un perdón", "Un compañero", "La rama", "La amistad", "La dignidad"],
+    "cierre": "Conflicto resuelto. La amistad sigue en revisión.",
+    "descripcion": "Sistema de control de versiones distribuido.",
+    "uso": "Registrar cambios y trabajar con ramas."
+  },
+  {
+    "id": 6, "nombre": "Pull Request", "grupo": "Celeste", "categoria": "Equipo", "color": "#87ceeb", "precio": 120,
+    "subtitulo": "El examen antes de entrar",
+    "valores": ["Un título", "Una descripción", "Un reviewer", "Un comentario", "Un rebase", "La aprobación"],
+    "cierre": "Aprobado con 14 comentarios. Faltan resolver 14.",
+    "descripcion": "Propuesta de cambios que el equipo revisa antes de integrarlos.",
+    "uso": "Revisar el código entre integrantes antes de sumarlo a la rama principal."
+  },
+  {
+    "id": 7, "nombre": "Node.js", "grupo": "Rosa", "categoria": "Servidor", "color": "#da70d6", "precio": 140,
+    "subtitulo": "La promesa eterna",
+    "valores": ["Un mate", "Un favor", "Un finde", "La paciencia", "El aguinaldo", "Tu paz mental"],
+    "cierre": "Era una tarea sencilla. Hace tres días.",
+    "descripcion": "Entorno para ejecutar JavaScript fuera del navegador.",
+    "uso": "Comprender el ecosistema JavaScript y el desarrollo de servidores."
+  },
+  {
+    "id": 8, "nombre": "Express", "grupo": "Rosa", "categoria": "Servidor", "color": "#da70d6", "precio": 160,
+    "subtitulo": "El combustible del equipo",
+    "valores": ["Sin azúcar", "Cortado", "Lágrima", "Capuchino", "Mocca", "Latte doble"],
+    "cierre": "Una ruta más y nos vamos. Mentira.",
+    "descripcion": "Framework web minimalista para Node.js.",
+    "uso": "Crear rutas y servicios HTTP en aplicaciones de servidor."
+  },
+  {
+    "id": 9, "nombre": "API REST", "grupo": "Rosa", "categoria": "Servidor", "color": "#da70d6", "precio": 160,
+    "subtitulo": "La conversación entre servidores",
+    "valores": ["Un GET", "Un POST", "Un token", "Un timeout", "Un CORS", "Un error 500"],
+    "cierre": "La API respondió 200. Los datos, no tanto.",
+    "descripcion": "Interfaz que permite intercambiar datos mediante HTTP.",
+    "uso": "Conectar DEVOPOLY con información de un servicio externo."
+  },
+  {
+    "id": 10, "nombre": "Vercel", "grupo": "Naranja", "categoria": "Nube", "color": "#ffa500", "precio": 180,
+    "subtitulo": "El momento de la verdad",
+    "valores": ["Un push", "Un build", "Un deploy", "Un redeploy", "Una variable", "Un error 404"],
+    "cierre": "En local funcionaba. En producción tiene otra opinión.",
+    "descripcion": "Plataforma para desplegar aplicaciones web.",
+    "uso": "Publicar una versión accesible del proyecto."
+  },
+  {
+    "id": 11, "nombre": "Docker", "grupo": "Naranja", "categoria": "Nube", "color": "#ffa500", "precio": 200,
+    "subtitulo": "Funciona en mi contenedor",
+    "valores": ["Un Dockerfile", "Una imagen", "Un puerto", "Un volumen", "Un compose", "Un finde"],
+    "cierre": "Ahora corre en todas las máquinas. El error también.",
+    "descripcion": "Empaqueta una aplicación con todo lo que necesita para ejecutarse.",
+    "uso": "Entender cómo se despliega el mismo proyecto en cualquier entorno."
+  },
+  {
+    "id": 12, "nombre": "AWS", "grupo": "Naranja", "categoria": "Nube", "color": "#ffa500", "precio": 220,
+    "subtitulo": "La nube también pasa factura",
+    "valores": ["Un peso", "Un café", "Un vuelto", "La tarjeta", "El aguinaldo", "El presupuesto"],
+    "cierre": "¡Felicidades! El servicio funcionó. Revisá la factura.",
+    "descripcion": "Infraestructura cloud, despliegue y servidores virtuales.",
+    "uso": "Conocer cómo se publica y escala una aplicación en la nube."
+  },
+  {
+    "id": 13, "nombre": "Vite", "grupo": "Rojo", "categoria": "Lógica", "color": "#ff4500", "precio": 220,
+    "subtitulo": "El arranque instantáneo",
+    "valores": ["Un npm install", "Un npm run dev", "Un puerto", "Un .env", "Un build", "Un reinicio"],
+    "cierre": "Arrancó en 300 ms. El bug, desde el lunes.",
+    "descripcion": "Herramienta de desarrollo y compilación para aplicaciones web.",
+    "uso": "Ejecutar el proyecto React durante el desarrollo."
+  },
+  {
+    "id": 14, "nombre": "JavaScript", "grupo": "Rojo", "categoria": "Lógica", "color": "#ff4500", "precio": 240,
+    "subtitulo": "La lógica de las sorpresas",
+    "valores": ["Un click", "Un intento", "Un console.log", "Una hipótesis", "Una madrugada", "Un exorcismo"],
+    "cierre": "No sé por qué funciona. No pienso tocarlo.",
+    "descripcion": "Agrega lógica e interactividad a la web.",
+    "uso": "Dados, filtros, eventos y acciones dinámicas."
+  },
+  {
+    "id": 15, "nombre": "React", "grupo": "Rojo", "categoria": "Lógica", "color": "#ff4500", "precio": 260,
+    "subtitulo": "La familia de componentes",
+    "valores": ["Un prop", "Un estado", "Un hook", "Un refactor", "El finde", "La paciencia"],
+    "cierre": "Ahora sí es reutilizable. En 17 componentes.",
+    "descripcion": "Biblioteca para construir interfaces con componentes.",
+    "uso": "Crear las secciones y tarjetas reutilizables."
+  },
+  {
+    "id": 16, "nombre": "JSON", "grupo": "Amarillo", "categoria": "Datos", "color": "#ffd700", "precio": 260,
+    "subtitulo": "La coma que lo rompe todo",
+    "valores": ["Una llave", "Una clave", "Un array", "Una coma", "Un parse", "Un SyntaxError"],
+    "cierre": "Faltaba una coma. Eran las 3 a.m.",
+    "descripcion": "Formato de texto para representar datos estructurados.",
+    "uso": "Guardar los recursos que se muestran dinámicamente."
+  },
+  {
+    "id": 17, "nombre": "Fetch API", "grupo": "Amarillo", "categoria": "Datos", "color": "#ffd700", "precio": 260,
+    "subtitulo": "La espera de la respuesta",
+    "valores": ["Un fetch", "Un await", "Un then", "Un catch", "Un spinner", "Un timeout"],
+    "cierre": "Esperando respuesta, como esperamos la nota.",
+    "descripcion": "Interfaz del navegador para realizar solicitudes HTTP.",
+    "uso": "Leer el JSON local o consultar una API pública."
+  },
+  {
+    "id": 18, "nombre": "SQL", "grupo": "Amarillo", "categoria": "Datos", "color": "#ffd700", "precio": 280,
+    "subtitulo": "El interrogatorio de los datos",
+    "valores": ["Un dato", "Un filtro", "Un JOIN", "Un respaldo", "Una auditoría", "La evidencia"],
+    "cierre": "La consulta era correcta. La tabla, no tanto.",
+    "descripcion": "Gestión, consultas y administración de bases de datos relacionales.",
+    "uso": "Consultar y organizar datos relacionados entre sí."
+  },
+  {
+    "id": 19, "nombre": "Kotlin", "grupo": "Verde", "categoria": "Diseño y apps", "color": "#32cd32", "precio": 300,
+    "subtitulo": "La calma antes del compilador",
+    "valores": ["Un mate", "Un null", "Un warning", "Un tutorial", "Un feriado", "La cordura"],
+    "cierre": "Compiló a la primera. Hay que llamar a alguien.",
+    "descripcion": "Desarrollo moderno de aplicaciones nativas para Android.",
+    "uso": "Pensar el proyecto más allá de la web, en aplicaciones móviles."
+  },
+  {
+    "id": 20, "nombre": "Figma", "grupo": "Verde", "categoria": "Diseño y apps", "color": "#32cd32", "precio": 300,
+    "subtitulo": "El diseño que nunca termina",
+    "valores": ["Un color", "Dos píxeles", "Un retoque", "Otra versión", "Otra reunión", "El archivo FINAL"],
+    "cierre": "final_v8_ahora_si_este.fig.",
+    "descripcion": "Herramienta para diseñar y prototipar interfaces.",
+    "uso": "Planificar la estética y las tarjetas antes de programarlas."
+  },
+  {
+    "id": 21, "nombre": "Bootstrap", "grupo": "Verde", "categoria": "Diseño y apps", "color": "#32cd32", "precio": 320,
+    "subtitulo": "La grilla de doce columnas",
+    "valores": ["Una clase", "Un container", "Un row", "Un col-md", "Un !important", "Un override"],
+    "cierre": "Una clase más. No, no esa clase.",
+    "descripcion": "Framework CSS con componentes y utilidades de diseño.",
+    "uso": "Acelerar la maquetación y mantener consistencia visual."
+  },
+  {
+    "id": 22, "nombre": "Responsive Design", "grupo": "Verde", "categoria": "Diseño y apps", "color": "#32cd32", "precio": 320,
+    "subtitulo": "Se ve bien en todos lados",
+    "valores": ["Un viewport", "Un media query", "Un breakpoint", "Un celular ajeno", "Un zoom", "Una rotación"],
+    "cierre": "En mi pantalla se veía perfecto.",
+    "descripcion": "Técnicas para adaptar una interfaz a distintos dispositivos.",
+    "uso": "Hacer que el tablero funcione en escritorio y celular."
+  },
+  {
+    "id": 23, "nombre": "DevTools", "grupo": "Azul", "categoria": "Calidad", "color": "#0000cd", "precio": 350,
+    "subtitulo": "La lupa del detective",
+    "valores": ["Un F12", "Un console.log", "Un breakpoint", "Un Network", "Otra pestaña", "Un café frío"],
+    "cierre": "El error estaba a la vista. En otra pestaña.",
+    "descripcion": "Herramientas del navegador para inspeccionar y depurar.",
+    "uso": "Encontrar errores de CSS, JavaScript y solicitudes de red."
+  },
+  {
+    "id": 24, "nombre": "Accesibilidad web", "grupo": "Azul", "categoria": "Calidad", "color": "#0000cd", "precio": 380,
+    "subtitulo": "Que la web sea de todas las personas",
+    "valores": ["Un alt", "Un label", "Un contraste", "Un tabindex", "Un lector", "Un rediseño"],
+    "cierre": "Si solo funciona con mouse, todavía falta una casilla.",
+    "descripcion": "Prácticas para facilitar el uso de la web a distintas personas.",
+    "uso": "Mejorar etiquetas, teclado, contraste y mensajes accesibles."
+  },
+  {
+    "id": 25, "nombre": "Android", "grupo": "Azul", "categoria": "Calidad", "color": "#0000cd", "precio": 400,
+    "subtitulo": "La prueba en el dispositivo ajeno",
+    "valores": ["Un click", "Un permiso", "Un reinicio", "Otro teléfono", "Una actualización", "Un celular nuevo"],
+    "cierre": "Probado en un dispositivo. El tuyo es otra historia.",
+    "descripcion": "Ecosistema móvil líder para desplegar aplicaciones.",
+    "uso": "Probar que la experiencia funcione en celulares reales."
+  }
+]

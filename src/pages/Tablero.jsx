@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles.css';
 import tecnologiasData from '../data/tecnologias.json';
+import { useSilencio } from '../context/SilencioContext.jsx';
 
 function Tablero() {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ function Tablero() {
   const [resultadoDados, setResultadoDados] = useState(null);
   const [cierreRevelado, setCierreRevelado] = useState(false);
   const [versionTarjeta, setVersionTarjeta] = useState(0);
-  const [silenciado, setSilenciado] = useState(false);
+  const { silenciado } = useSilencio();
 
   const [tarjetaActiva, setTarjetaActiva] = useState({
     tipo: 'equipo',
@@ -160,8 +161,8 @@ function Tablero() {
       boton: 'Comenzar recorrido', destino: '/', color: '#f39c12'
     },
     'GIT': {
-      titulo: 'GIT', texto: 'Subite al tren y explorá nuestro repositorio local de recursos, proyectos y herramientas.',
-      boton: 'Abrir inventario (JSON)', destino: '/herramientas', color: '#34495e'
+      titulo: 'GIT', texto: 'Llegó la hora de pagar tu cuota mensual de commits.',
+      boton: 'Pagar en GitHub', destino: 'https://github.com/peterbusta/TP2_Grupo24', color: '#34495e', externa: true
     },
     'ENERGÍA': {
       titulo: 'ENERGÍA', texto: 'Conectando los cables de alta tensión a la red externa.',
@@ -172,8 +173,8 @@ function Tablero() {
       boton: 'Ver árbol de componentes', destino: '/arbol', color: '#3498db'
     },
     'IMPUESTO': {
-      titulo: 'IMPUESTO', texto: 'Llegó la hora de pagar tu cuota mensual de commits.',
-      boton: 'Pagar en GitHub', destino: 'https://github.com/peterbusta/TP2_Grupo24', color: '#7f8c8d', externa: true
+      titulo: 'IMPUESTO', texto: 'Consultá el inventario de herramientas, lenguajes y recursos del equipo.',
+      boton: 'Abrir mazo', destino: '/datos', color: '#7f8c8d'
     }
   };
 
@@ -291,13 +292,13 @@ function Tablero() {
   );
 
   const ejecutarAccionEspecial = () => {
-    if (!silenciado) { // Envolvemos el clic
+    if (!silenciado) {
       const sonidoClic = new Audio('/audio/clic.mp3');
       sonidoClic.volume = 0.5;
       sonidoClic.play().catch(error => console.log(error));
     }
 
-    if (tarjetaActiva.externa) {
+    if (tarjetaActiva.externa || /^https?:\/\//i.test(tarjetaActiva.destino || '')) {
       window.open(tarjetaActiva.destino, '_blank', 'noopener,noreferrer');
       return;
     }
@@ -334,16 +335,6 @@ function Tablero() {
 
   return (
     <div className="layout-devopoly">
-
-       {/* BOTÓN MUTE FLOTANTE */}
-      <button 
-        className="btn btn-dark position-fixed bottom-0 end-0 m-4 rounded-circle d-flex align-items-center justify-content-center shadow border-secondary"
-        style={{ width: '45px', height: '45px', zIndex: 1050, backgroundColor: 'rgba(11, 17, 24, 0.8)', backdropFilter: 'blur(5px)' }}
-        onClick={() => setSilenciado(!silenciado)}
-        title={silenciado ? "Activar sonido" : "Silenciar sonido"}
-      >
-        <span style={{ fontSize: '1.2rem' }}>{silenciado ? '🔇' : '🔊'}</span>
-      </button>
 
       {/* CABECERA LIMPIA */}
       <div className="header-tablero text-center mb-2 w-100">

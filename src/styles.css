@@ -156,12 +156,14 @@ h1, h2, h3, .offcanvas-title {
 .submenu-rebelde {
   margin: 0 0 4px 0 !important;
   display: block !important;
+  text-align: left !important;
 }
 
 .submenu-rebelde .nav-link-inner-compact {
   padding: 6px 10px !important;
   margin: 0 !important;
   line-height: 1.2 !important;
+  text-align: left !important;
 }
 
 /* Efecto mesa de juego */
