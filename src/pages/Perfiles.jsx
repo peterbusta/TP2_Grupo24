@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react'; // Unificamos los imports de React
+import { useLocation } from 'react-router-dom';
 import '../styles.css';
 
 function Perfiles() {
+  const location = useLocation();
   const [jugadorActivo, setJugadorActivo] = useState(null);
   const [suerteIndex, setSuerteIndex] = useState(-1);
   const [arcaIndex, setArcaIndex] = useState(-1);
@@ -101,6 +103,24 @@ function Perfiles() {
       ]
     }
   ];
+
+useEffect(() => {
+    // Si llegamos a esta vista y traemos un "estado" desde React Router...
+    if (location.state && location.state.jugador) {
+      // El nombre que mandamos desde Tablero era, por ej, "Flavia".
+      // En Perfiles lo tenés guardado como "FLAVIA BERZUINI", así que buscamos que incluya el nombre.
+      const jugadorEncontrado = equipo.find(j => j.nombre.includes(location.state.jugador.toUpperCase()));
+      
+      if (jugadorEncontrado) {
+        // Abrimos automáticamente el panel de ese jugador
+        setJugadorActivo(jugadorEncontrado);
+        
+        // Limpiamos el estado de la ruta para que si el usuario recarga la página, 
+        // no se vuelva a auto-abrir la tarjeta
+        window.history.replaceState({}, document.title)
+      }
+    }
+  }, [location]); // Dependencia: se ejecuta cada vez que cambia la ruta
 
   const currentIndex = jugadorActivo ? equipo.findIndex(j => j.id === jugadorActivo.id) : -1;
   const prevJugador = currentIndex >= 0 ? equipo[(currentIndex - 1 + equipo.length) % equipo.length] : null;

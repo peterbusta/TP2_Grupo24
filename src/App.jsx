@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import Sidebar from './components/Sidebar.jsx';
 import Perfiles from './pages/Perfiles.jsx';
 import Tablero from './pages/Tablero.jsx';
+import Contacto from './pages/Contacto.jsx';
 import { Container } from 'react-bootstrap';
 
 // Componentes temporales para las rutas que todavía no armamos
@@ -23,6 +24,7 @@ function App() {
             <Route path="/api" element={<ApiExterna />} />
             <Route path="/arbol" element={<Arbol />} />
             <Route path="/bitacora" element={<Bitacora />} />
+            <Route path="/contacto" element={<Contacto />} />
           </Routes>
         </Container>
       </main>
