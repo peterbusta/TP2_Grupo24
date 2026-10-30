@@ -88,17 +88,28 @@ const equipo = [
     color: '#f39c12',
     logo: '/img/auto.png',
     avatar: '/img/avatar-pedro.png',
+    videoTransformacion: '/img/pedro_transformacion.mp4',
     ubicacion: 'La Plata, Argentina',
-    edad: 35,
+    edad: 36,
     caracteristica: 'Mantiene el monopolio de los componentes Java.',
     tecnologias: [
       { nivel: 'Renta', nombre: 'Java', casitas: 0 },
-      { nivel: 'Renta con grupo de color', nombre: 'Spring Boot', casitas: 0 },
-      { nivel: 'Renta con 1 Casa', nombre: 'Angular', casitas: 1 },
-      { nivel: 'Renta con 2 Casas', nombre: 'TypeScript', casitas: 2 },
-      { nivel: 'Renta con 3 Casas', nombre: 'RxJS', casitas: 3 },
-      { nivel: 'Renta con 4 Casas', nombre: 'Jira', casitas: 4 },
-      { nivel: 'Renta con 1 Hotel', nombre: 'Scrum', hotel: true }
+      { nivel: 'Renta con grupo de color', nombre: 'HTML5', casitas: 0 },
+      { nivel: 'Renta con 1 Casa', nombre: 'JavaScript', casitas: 1 },
+      { nivel: 'Renta con 2 Casas', nombre: 'SQL', casitas: 2 },
+      { nivel: 'Renta con 3 Casas', nombre: 'GitHub', casitas: 3 },
+      { nivel: 'Renta con 4 Casas', nombre: 'Bash', casitas: 4 },
+      { nivel: 'Renta con 1 Hotel', nombre: 'Node.js', hotel: true }
+    ],
+    peliculas: [
+      { titulo: 'Nueve Reinas', url: 'https://www.youtube.com/embed/I42JYVjQkPI?si=lSWy_oWZMeFrYK-d' },
+      { titulo: 'La Nona', url: 'https://www.youtube.com/embed/BFTLQvibBJQ?si=gV1BOJptAfWcIH87' },
+      { titulo: 'Amarcord', url: 'https://www.youtube.com/embed/fI1I_mcL3qo?si=viS2OJUxD8hsB3bB' }
+    ],
+    discos: [
+      { album: 'Artaud', cancion: 'Bajan - Pescado Rabioso', pista: '/audio/bajan.mp3' },
+      { album: 'La grasa de las capitales', cancion: 'La grasa de las capitales - Serú Girán', pista: '/audio/grasa.mp3' },
+      { album: 'La mosca y la sopa', cancion: 'Tarea Fina - Patricio Rey y sus Redonditos de Ricota', pista: '/audio/tareafina.mp3' }
     ]
   }
 ];
