@@ -79,6 +79,7 @@ const equipo = [
     color: '#2ecc71',
     logo: '/img/dedal.png',
     avatar: '/img/avatar-ludmila.png',
+    videoTransformacion: '/img/presentacion-ludmila.mp4',
     ubicacion: 'CABA, Argentina',
     edad: 25,
     caracteristica: 'Dueña del backend y de los ferrocarriles.',
@@ -87,9 +88,19 @@ const equipo = [
       { nivel: 'Renta con grupo de color', nombre: 'Django', casitas: 0 },
       { nivel: 'Renta con 1 Casa', nombre: 'SQL', casitas: 1 },
       { nivel: 'Renta con 2 Casas', nombre: 'PostgreSQL', casitas: 2 },
-      { nivel: 'Renta con 3 Casas', nombre: 'Linux', casitas: 3 },
-      { nivel: 'Renta con 4 Casas', nombre: 'Bash', casitas: 4 },
-      { nivel: 'Renta con 1 Hotel', nombre: 'AWS EC2', hotel: true }
+      { nivel: 'Renta con 3 Casas', nombre: 'Node.js', casitas: 3 },
+      { nivel: 'Renta con 4 Casas', nombre: 'Typescript', casitas: 4 },
+      { nivel: 'Renta con 1 Hotel', nombre: 'PHP/ Wordpress', hotel: true }
+    ],
+    peliculas: [
+      { titulo: 'Avengers: End War', url: 'https://www.youtube.com/embed/8gcRTMr-rlg' },
+      { titulo: 'Dead Poets Society', url: 'https://www.youtube.com/embed/omveFR-2hmg' },
+      { titulo: 'Hacksaw Ridge', url: 'https://www.youtube.com/embed/s2-1hz1juBI' }
+    ],
+    discos: [
+      { album: 'Unorthodoz Jukebox', cancion: 'Locked out of Havean - Bruno Mars', pista: '/audio/BrunoMars.mp3' },
+      { album: 'OK Computer', cancion: 'Cactus - Radiohead', pista: '/audio/radiohead.mp3' },
+      { album: 'Teatro d’ira: Vol. 1', cancion: 'I wanna be your slave - Maneskin', pista: '/audio/slave_maneskin.mp3' }
     ]
   },
   {

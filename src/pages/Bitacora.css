@@ -58,6 +58,7 @@
   );
   color: #fff;
   text-align: left;
+  cursor: pointer;
 }
 
 .bitacora-titulo:hover,
@@ -88,13 +89,20 @@
 .bitacora-toggle {
   color: var(--color-bitacora);
   font-size: 0.9rem;
+  font-weight: bold;
 }
 
 .bitacora-contenido {
-  min-height: 92px;
   padding: 20px 24px;
   border-top: 1px solid color-mix(in srgb, var(--color-bitacora) 35%, transparent);
   background: rgba(22, 27, 34, 0.72);
+  color: #d1d5db;
+  font-family: "Roboto", sans-serif;
+  line-height: 1.6;
+}
+
+.bitacora-contenido p {
+  margin-bottom: 1rem;
 }
 
 .bitacora-vacia {
@@ -102,6 +110,66 @@
   color: #7d8894;
   font-size: 0.9rem;
   font-style: italic;
+}
+
+/* --- Estilos para los pasos numerados y contenidos internos --- */
+.paso-turno {
+  display: flex;
+  gap: 1rem;
+  margin: 1.2rem 0;
+}
+
+.numero-paso {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  min-width: 24px;
+}
+
+.numero-celeste { color: #3498db; }
+.numero-morado { color: #8e44ad; }
+.numero-amarillo { color: #f1c40f; }
+
+.detalle-paso h3 {
+  font-size: 1.05rem;
+  color: #fff;
+  margin: 0 0 0.3rem 0;
+}
+
+.detalle-paso p {
+  margin: 0;
+  color: #9ca3af;
+}
+
+/* --- Tarjetas de opciones internas (ej. Uso de IA) --- */
+.opcion-carta {
+  background: rgba(15, 23, 42, 0.6);
+  border-left: 3px solid var(--color-bitacora);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+}
+
+.encabezado-opcion {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.badge-opcion {
+  background: var(--color-bitacora);
+  color: #000;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.encabezado-opcion h4 {
+  margin: 0;
+  color: #fff;
+  font-size: 1rem;
 }
 
 @media (max-width: 576px) {
