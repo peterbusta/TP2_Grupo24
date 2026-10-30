@@ -43,16 +43,22 @@ const equipo = [
     logo: '/img/perro.png',
     avatar: '/img/avatar-brian.png',
     ubicacion: 'La Plata, Argentina',
-    edad: 28,
-    caracteristica: 'Si saca un doble, refactoriza todo el tablero.',
+    edad: 32,
+    caracteristica: 'Refactoriza todo el tablero si saca doble.',
     tecnologias: [
-      { nivel: 'Renta', nombre: 'React', casitas: 0 },
-      { nivel: 'Renta con grupo de color', nombre: 'Vite', casitas: 0 },
-      { nivel: 'Renta con 1 Casa', nombre: 'Bootstrap', casitas: 1 },
-      { nivel: 'Renta con 2 Casas', nombre: 'CSS Avanzado', casitas: 2 },
-      { nivel: 'Renta con 3 Casas', nombre: 'REST APIs', casitas: 3 },
-      { nivel: 'Renta con 4 Casas', nombre: 'MongoDB', casitas: 4 },
-      { nivel: 'Renta con 1 Hotel', nombre: 'Docker', hotel: true }
+      { nivel: 'Renta', nombre: 'HTML / CSS / JavaScript', casitas: 0 },
+      { nivel: 'Renta con grupo de color', nombre: 'Node.js / Express', casitas: 0 },
+      { nivel: 'Renta con 1 Casa', nombre: 'Kotlin / Android', casitas: 1 },
+      { nivel: 'Renta con 2 Casas', nombre: '.NET / C#', casitas: 2 },
+      { nivel: 'Renta con 3 Casas', nombre: 'Spring / Java', casitas: 3 },
+      { nivel: 'Renta con 4 Casas', nombre: 'AWS Cloud', casitas: 4 },
+      { nivel: 'Renta con 1 Hotel', nombre: 'LLMs', hotel: true }
+    ],
+    peliculasFavoritas: ['The Dawn of the Dead', 'Arrival', 'Her'],
+    discosFavoritos: [
+      'Random Access Memories - Daft Punk',
+      'The Dark Side of the Moon - Pink Floyd',
+      'Clics modernos - Charly García'
     ]
   },
   {
@@ -247,9 +253,11 @@ function Perfiles() {
                   <img src={jugadorActivo.avatar} alt="Avatar" className="video-vertical bg-dark" />
                 )
               ) : (
-                <div className="video-vertical bg-dark d-flex align-items-center justify-content-center" style={{ minHeight: '220px', border: `2px dashed ${jugadorActivo.color}` }}>
-                   <small className="text-secondary">Avatar</small>
-                </div>
+                <img
+                  src={jugadorActivo.avatar}
+                  alt={`Avatar de ${jugadorActivo.nombre}`}
+                  className="video-vertical bg-dark"
+                />
               )}
               
               <h2 className="text-white font-oswald text-center mt-2">{jugadorActivo.nombre}</h2>
@@ -274,6 +282,33 @@ function Perfiles() {
                   </div>
                 ))}
               </div>
+
+              {jugadorActivo.peliculasFavoritas && jugadorActivo.discosFavoritos && (
+                <div className="seccion-preferencias">
+                  <div className="titulo-gustos">
+                    <h4 className="text-white font-oswald m-0">ARCA COMUNAL</h4>
+                  </div>
+
+                  <div className="preferencias-grid">
+                    <div>
+                      <h5 className="preferencias-titulo">PELÍCULAS</h5>
+                      <ul className="preferencias-lista">
+                        {jugadorActivo.peliculasFavoritas.map((pelicula) => (
+                          <li key={pelicula}>{pelicula}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h5 className="preferencias-titulo">DISCOS</h5>
+                      <ul className="preferencias-lista">
+                        {jugadorActivo.discosFavoritos.map((disco) => (
+                          <li key={disco}>{disco}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              )}
 
               {jugadorActivo.id === 1 && (
                 <div className="seccion-gustos">
