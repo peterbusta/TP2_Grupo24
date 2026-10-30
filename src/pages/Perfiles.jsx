@@ -321,7 +321,7 @@ function Perfiles() {
                 </div>
               )}
 
-              {jugadorActivo.id === 1 && (
+              {jugadorActivo.discos && jugadorActivo.peliculas && (
                 <div className="seccion-gustos">
                   <div className="titulo-gustos">
                     <h4 className="text-white font-oswald m-0">DISCOS Y PELÍCULAS</h4>
