@@ -98,7 +98,7 @@ const seccionesIniciales = [
       <span className="badge-opcion">B</span>
       <h4>Asistencia en Código y Debugging (Gemini y Claude)</h4>
     </div>
-    <p>Consultados para optimizar la lógica matemática del avance de los peones en el tablero isométrico, la animación de los dados y la depuración de selectores CSS complejos[cite: 1].</p>
+    <p>Consultados para optimizar la lógica matemática del avance de los peones en el tablero isométrico, la animación de los dados y la depuración de selectores CSS complejos.</p>
   </div>
 </>
     )

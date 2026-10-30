@@ -29,11 +29,11 @@
 
 ## Visión general y temática
 
-**Devopoly** es el resultado de la evolución del TP1 (sitio estático en HTML/CSS/JS) hacia una **Single Page Application (SPA) construida sobre React 18 y Vite**.
+**Devopoly** es el resultado de la evolución del TP1 (sitio estático en HTML/CSS/JS) hacia una SPA construida sobre React.
 
 La aplicación gamifica la experiencia del portafolio técnico grupal mediante las siguientes equivalencias conceptuales:
 * **Casillas del tablero:** Lenguajes, herramientas y conceptos (*HTML5, CSS3, Git, Node.js, React, AWS, etc.*).
-* **Peones / fichas de juego:** Sombrero, Perro, Dedal y Auto, asociados a cada uno de los cuatro integrantes del grupo.
+* **Peones / fichas de juego:** Sombrero, perro, dedal y auto, asociados a cada uno de los cuatro integrantes del grupo.
 * **Propiedades y niveles de renta:** Representación del dominio técnico (desde "Renta base" hasta "Renta con 1 Hotel").
 * **Cartas de suerte y arca comunal:** Desafíos, memes de programación, cultura pop, listas de música y trailers multimedia.
 
@@ -151,7 +151,7 @@ main.jsx
 
 ### 4. Desafío del banquero - API Pública (`DesafioBanquero.jsx`)
 * **Consumo de API externa:** Conexión con `https://countriesnow.space/api/v0.1/countries/flag/images` para extraer banderas de países en tiempo real.
-* **Manejo de estados de red:** Vistas diferenciadas para estado de Carga (Loader con dado barajando), Error con botón de reintento, y Respuesta procesada.
+* **Manejo de estados de red:** Vistas diferenciadas para estado de Carga (Loader con dado barajando), error con botón de reintento, y respuesta procesada.
 * **Lógica de trivia:**
   * Genera 4 opciones aleatorias por ronda, evaluando aciertos, racha actual y puntaje acumulado.
 
@@ -160,7 +160,7 @@ main.jsx
 * **Interacción colapsable:** Botones `+` / `−` para contraer y expandir ramas en tiempo real mediante estados locales independientes.
 
 ### 6. Bitácora de desarrollo (`Bitacora.jsx`)
-* **Registro de procesos:** Acordeón interactivo categorizado por color según los bloques del juego (Planificación, Git, Lógica, Responsividad, Navegación e IA).
+* **Registro de procesos:** Acordeón interactivo categorizado por color según los bloques del juego (planificación, git, lógica, responsividad, navegación e IA).
 * **Pasos numerados:** Línea de tiempo visual que detalla los desafíos técnicos encontrados durante el desarrollo.
 
 ### 7. Declaración ante el banco - Contacto (`Contacto.jsx`)
@@ -185,7 +185,7 @@ El diseño sigue una paleta en tono oscuro (*Dark Theme*) inspirada en neón y t
 | Elemento / Sección | Código Hex | Referencia en Devopoly |
 | :--- | :--- | :--- |
 | **Fondo principal** | `#0b1118` / `#121b25` | Base oscura del tablero |
-| **Acento dorado / Neón** | `#f39c12` / `#e7bd63` | Salida / Títulos principales |
+| **Acento dorado ** | `#f39c12` / `#e7bd63` | Salida / Títulos principales |
 | **Flavia Berzuini** | `#9b59b6` | Violeta / Ficha Sombrero |
 | **Brian Sabio** | `#1e3799` | Azul Marino / Ficha Perro |
 | **Ludmila Quiroz** | `#2ecc71` | Verde Esmeralda / Ficha Dedal |
@@ -219,7 +219,7 @@ El diseño sigue una paleta en tono oscuro (*Dark Theme*) inspirada en neón y t
    ```bash
    npm run dev
    ```
-   *Abre tu navegador e ingresa a `http://localhost:5173/`.*
+   *Abrir el navegador e ingresar a `http://localhost:5173/`.*
 
 4. **Compilar para producción:**
    ```bash
@@ -236,7 +236,7 @@ El diseño sigue una paleta en tono oscuro (*Dark Theme*) inspirada en neón y t
 ## Integrantes y distribución de roles
 
 * **Flavia Berzuini** ([@FlaviaBerzuini](https://github.com/FlaviaBerzuini))
-  * *Responsabilidades:* Estructura del sitio, lógica del tablero interactivo, implementación del Context API de silencio y diseño general.
+  * *Responsabilidades:* Estructura del sitio, lógica del tablero interactivo, implementación del Context API de silencio y diseño general tanto visual como lógico. 
 * **Pedro Bustamante** ([@peterbusta](https://github.com/peterbusta))
   * *Responsabilidades:* Creación y administración del repositorio Git, desarrollo de su perfil individual, ajustes de carrusel y compatibilidad de audio.
 * **Brian Sabio** ([@BrianSabio](https://github.com/BrianSabio))
