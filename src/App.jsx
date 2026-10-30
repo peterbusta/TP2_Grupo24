@@ -8,9 +8,9 @@ import { Container } from 'react-bootstrap';
 import MazoTecnologico from './pages/MazoTecnologico.jsx';
 import DesafioBanquero from './components/DesafioBanquero';
 import ArbolComponentes from './pages/ArbolComponentes.jsx';
+import Bitacora from './pages/Bitacora.jsx';
 
 const ApiExterna = () => <h2 className="mt-4 text-white">API pública</h2>;
-const Bitacora = () => <h2 className="mt-4 text-white">Bitácora</h2>;
 
 function App() {
   return (
