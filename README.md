@@ -21,7 +21,7 @@
 6. [Gestión de estado y contexto global](#gestión-de-estado-y-contexto-global)
 7. [Detalles de diseño visual y paleta de colores](#detalles-de-diseño-visual-y-paleta-de-colores)
 8. [Instalación y guía de ejecución](#instalación-y-guía-de-ejecución)
-9. [Integrantes y distribución de roles](#integrantes-y-distribución-de-roles)
+9. [Integrantes](#integrantes)
 10. [Uso directo de Inteligencia Artificial](#uso-directo-de-inteligencia-artificial)
 11. [Contexto académico](#contexto-académico)
 
@@ -233,16 +233,12 @@ El diseño sigue una paleta en tono oscuro (*Dark Theme*) inspirada en neón y t
 
 ---
 
-## Integrantes y distribución de roles
+## Integrantes
 
 * **Flavia Berzuini** ([@FlaviaBerzuini](https://github.com/FlaviaBerzuini))
-  * *Responsabilidades:* Estructura del sitio, lógica del tablero interactivo, implementación del Context API de silencio y diseño general tanto visual como lógico. 
 * **Pedro Bustamante** ([@peterbusta](https://github.com/peterbusta))
-  * *Responsabilidades:* Creación y administración del repositorio Git, desarrollo de su perfil individual, ajustes de carrusel y compatibilidad de audio.
 * **Brian Sabio** ([@BrianSabio](https://github.com/BrianSabio))
-  * *Responsabilidades:* Desarrollo de la sección "Árbol de Componentes", estructura de la Bitácora de desarrollo y maquetación de su perfil personal.
 * **Ludmila Quiroz** ([@Ludmimquiroz](https://github.com/Ludmimquiroz))
-  * *Responsabilidades:* Desarrollo de su perfil personal, integración de la descripción de la bitácora, ajustes finales de diseño responsivo y armado del Readme.
 
 ---
 
