@@ -54,11 +54,22 @@ const equipo = [
       { nivel: 'Renta con 4 Casas', nombre: 'AWS Cloud', casitas: 4 },
       { nivel: 'Renta con 1 Hotel', nombre: 'LLMs', hotel: true }
     ],
-    peliculasFavoritas: ['The Dawn of the Dead', 'Arrival', 'Her'],
-    discosFavoritos: [
-      'Random Access Memories - Daft Punk',
-      'The Dark Side of the Moon - Pink Floyd',
-      'Clics modernos - Charly García'
+    peliculas: [
+      { titulo: 'The Dawn of the Dead', url: 'https://www.youtube.com/embed/DV8mJcuYVaA?si=z8yCS4oFDGf_hMaW' },
+      { titulo: 'Arrival', url: 'https://www.youtube.com/embed/tFMo3UJ4B4g?si=z0hWRJnlfwNz3QXN' },
+      { titulo: 'Her', url: 'https://www.youtube.com/embed/dJTU48_yghs?si=sI8ty8xaVNLkP1nX' }
+    ],
+    discos: [
+      {
+        album: 'Random Access Memories',
+        cancion: 'Instant Crush - Daft Punk',
+        pista: '/audio/InstantCrush-RandomAccessMemories-DaftPunk.mp3'
+      },
+      {
+        album: 'The Dark Side of the Moon',
+        cancion: 'Time - Pink Floyd',
+        pista: '/audio/Time-TheDarkSideOfTheMoon-PinkFloyd.mp3'
+      }
     ]
   },
   {
@@ -255,14 +266,10 @@ function Perfiles() {
           <div className="panel-panoramico" style={{ '--color-jugador': jugadorActivo.color }}>
             
             <div className="columna-video">
-              {jugadorActivo.id === 1 ? (
-                jugadorActivo.videoTransformacion ? (
-                  <video className="video-vertical" autoPlay playsInline>
-                    <source src={jugadorActivo.videoTransformacion} type="video/mp4" />
-                  </video>
-                ) : (
-                  <img src={jugadorActivo.avatar} alt="Avatar" className="video-vertical bg-dark" />
-                )
+              {jugadorActivo.videoTransformacion ? (
+                <video className="video-vertical" autoPlay playsInline>
+                  <source src={jugadorActivo.videoTransformacion} type="video/mp4" />
+                </video>
               ) : (
                 <img
                   src={jugadorActivo.avatar}
@@ -293,33 +300,6 @@ function Perfiles() {
                   </div>
                 ))}
               </div>
-
-              {jugadorActivo.peliculasFavoritas && jugadorActivo.discosFavoritos && (
-                <div className="seccion-preferencias">
-                  <div className="titulo-gustos">
-                    <h4 className="text-white font-oswald m-0">ARCA COMUNAL</h4>
-                  </div>
-
-                  <div className="preferencias-grid">
-                    <div>
-                      <h5 className="preferencias-titulo">PELÍCULAS</h5>
-                      <ul className="preferencias-lista">
-                        {jugadorActivo.peliculasFavoritas.map((pelicula) => (
-                          <li key={pelicula}>{pelicula}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <h5 className="preferencias-titulo">DISCOS</h5>
-                      <ul className="preferencias-lista">
-                        {jugadorActivo.discosFavoritos.map((disco) => (
-                          <li key={disco}>{disco}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              )}
 
               {jugadorActivo.discos && jugadorActivo.peliculas && (
                 <div className="seccion-gustos">
