@@ -99,7 +99,6 @@ const equipo = [
     color: '#f39c12',
     logo: '/img/auto.png',
     avatar: '/img/avatar-pedro.png',
-    videoTransformacion: '/img/pedro_transformacion.mp4',
     ubicacion: 'La Plata, Argentina',
     edad: 36,
     caracteristica: 'Mantiene el monopolio de los componentes Java.',
