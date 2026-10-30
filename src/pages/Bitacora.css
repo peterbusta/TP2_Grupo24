@@ -1,0 +1,122 @@
+.bitacora-devopoly {
+  align-items: center;
+  gap: 28px;
+}
+
+.bitacora-encabezado {
+  width: 100%;
+  max-width: 760px;
+}
+
+.bitacora-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.bitacora-logo img {
+  width: 92px;
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.45));
+}
+
+.bitacora-subtitulo {
+  margin: 12px 0 0;
+  color: #aeb5be;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.bitacora-lista {
+  display: grid;
+  width: 100%;
+  max-width: 920px;
+  gap: 14px;
+}
+
+.bitacora-entrada {
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--color-bitacora) 55%, #263442);
+  border-radius: 10px;
+  background: rgba(11, 17, 24, 0.82);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
+}
+
+.bitacora-titulo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 76px;
+  padding: 14px 20px;
+  border: 0;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--color-bitacora) 18%, #121b25),
+    #121b25
+  );
+  color: #fff;
+  text-align: left;
+}
+
+.bitacora-titulo:hover,
+.bitacora-titulo:focus-visible {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--color-bitacora) 30%, #121b25),
+    #121b25
+  );
+}
+
+.bitacora-titulo-contenido {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: "Oswald", sans-serif;
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  text-transform: uppercase;
+}
+
+.bitacora-titulo-contenido img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 5px rgba(0, 0, 0, 0.4));
+}
+
+.bitacora-toggle {
+  color: var(--color-bitacora);
+  font-size: 0.9rem;
+}
+
+.bitacora-contenido {
+  min-height: 92px;
+  padding: 20px 24px;
+  border-top: 1px solid color-mix(in srgb, var(--color-bitacora) 35%, transparent);
+  background: rgba(22, 27, 34, 0.72);
+}
+
+.bitacora-vacia {
+  margin: 0;
+  color: #7d8894;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+@media (max-width: 576px) {
+  .bitacora-titulo {
+    min-height: 68px;
+    padding: 12px 14px;
+  }
+
+  .bitacora-titulo-contenido {
+    gap: 11px;
+    font-size: 1rem;
+  }
+
+  .bitacora-titulo-contenido img {
+    width: 34px;
+    height: 34px;
+  }
+}

@@ -350,6 +350,7 @@ body:has(.vista-cinematica) {
   .panel-panoramico { flex-direction: column; min-height: 90vh; }
   .columna-video, .columna-datos { padding: 15px; }
   .video-vertical { max-width: 200px; }
+  .preferencias-grid { grid-template-columns: 1fr; gap: 14px; }
   .contenedor-mazos { flex-direction: column; gap: 20px; }
   .carta-revelada { width: 100%; max-width: 250px; }
 }
@@ -432,6 +433,38 @@ body:has(.vista-cinematica) {
 .seccion-gustos {
   margin-top: 20px;
   padding-top: 10px;
+}
+
+.seccion-preferencias {
+  margin-top: 20px;
+  padding-top: 10px;
+}
+
+.preferencias-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.preferencias-titulo {
+  margin: 0 0 8px;
+  color: var(--color-jugador);
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.preferencias-lista {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding-left: 18px;
+  color: #aeb5be;
+  font-size: 0.85rem;
+}
+
+.preferencias-lista li::marker {
+  color: var(--color-jugador);
 }
 
 .titulo-gustos {

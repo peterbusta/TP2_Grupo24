@@ -7,10 +7,10 @@ import Contacto from './pages/Contacto.jsx';
 import { Container } from 'react-bootstrap';
 import MazoTecnologico from './pages/MazoTecnologico.jsx';
 import DesafioBanquero from './components/DesafioBanquero';
+import ArbolComponentes from './pages/ArbolComponentes.jsx';
+import Bitacora from './pages/Bitacora.jsx';
 
 const ApiExterna = () => <h2 className="mt-4 text-white">API pública</h2>;
-const Arbol = () => <h2 className="mt-4 text-white">Árbol de componentes</h2>;
-const Bitacora = () => <h2 className="mt-4 text-white">Bitácora</h2>;
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
             <Route path="/perfiles" element={<Perfiles />} />
             <Route path="/datos" element={<MazoTecnologico />} />
             <Route path="/api" element={<ApiExterna />} />
-            <Route path="/arbol" element={<Arbol />} />
+            <Route path="/arbol" element={<ArbolComponentes />} />
             <Route path="/bitacora" element={<Bitacora />} />
             <Route path="/contacto" element={<Contacto />} />
             <Route path="/desafio" element={<DesafioBanquero />} />
