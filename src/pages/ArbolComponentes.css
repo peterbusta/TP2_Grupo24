@@ -1,0 +1,105 @@
+.arbol-componentes {
+  align-items: center;
+  gap: 26px;
+}
+
+.arbol-encabezado {
+  width: 100%;
+  max-width: 760px;
+}
+
+.arbol-panel {
+  width: 100%;
+  max-width: 980px;
+  padding: clamp(18px, 4vw, 36px);
+  overflow-x: auto;
+  border: 1px solid rgba(243, 156, 18, 0.35);
+  border-radius: 12px;
+  background: rgba(11, 17, 24, 0.82);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.28);
+}
+
+.arbol-lista {
+  position: relative;
+  display: grid;
+  gap: 22px;
+  margin: 0;
+  padding-left: 48px;
+  list-style: none;
+}
+
+.arbol-lista:not(.arbol-raiz)::before {
+  position: absolute;
+  top: 0;
+  bottom: 24px;
+  left: 14px;
+  width: 1px;
+  content: "";
+  background: rgba(243, 156, 18, 0.35);
+}
+
+.arbol-nodo {
+  position: relative;
+  min-width: max-content;
+}
+
+.arbol-lista:not(.arbol-raiz) > .arbol-nodo::before {
+  position: absolute;
+  top: 21px;
+  left: -34px;
+  width: 24px;
+  height: 1px;
+  content: "";
+  background: rgba(243, 156, 18, 0.35);
+}
+
+.arbol-nodo-contenido {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  min-width: min(100%, 360px);
+  padding: 9px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 7px;
+  background: #121b25;
+}
+
+.arbol-nodo-contenido strong {
+  display: block;
+  color: #f4c16e;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.arbol-nodo-contenido span:not(.arbol-hoja) {
+  display: block;
+  margin-top: 2px;
+  color: #aeb5be;
+  font-size: 0.82rem;
+}
+
+.arbol-toggle {
+  width: 25px;
+  height: 25px;
+  flex: 0 0 25px;
+  border: 1px solid #f39c12;
+  border-radius: 50%;
+  background: transparent;
+  color: #f39c12;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.arbol-toggle:hover,
+.arbol-toggle:focus-visible {
+  background: #f39c12;
+  color: #0b1118;
+}
+
+.arbol-hoja {
+  width: 25px;
+  flex: 0 0 25px;
+  color: #f39c12;
+  text-align: center;
+}
