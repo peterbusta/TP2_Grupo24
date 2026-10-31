@@ -312,12 +312,19 @@ function Perfiles() {
 
               <div className="flex-grow-1 overflow-auto pe-2">
                 {jugadorActivo.tecnologias.map((tech, index) => (
-                  <div key={index} className="habilidad-item">
-                    <div className="habilidad-nivel">
-                      <span>{tech.nivel}</span>
+                  <div 
+                    key={index} 
+                    className="habilidad-item d-flex justify-content-between align-items-center flex-wrap mb-3 border-bottom border-dark pb-1"
+                    style={{ gap: '4px 10px' }}
+                  >
+                    <div className="d-flex align-items-center flex-wrap" style={{ gap: '8px' }}>
+                      <span style={{ fontSize: '0.85rem', color: '#aeb5be' }}>{tech.nivel}</span>
                       <div className="d-flex gap-1">{renderizarCasitas(tech)}</div>
                     </div>
-                    <strong className="text-white">₩ {tech.nombre}</strong>
+                    
+                    <strong className="text-white text-end ms-auto" style={{ fontSize: '0.95rem', whiteSpace: 'nowrap' }}>
+                      ₩ {tech.nombre}
+                    </strong>
                   </div>
                 ))}
               </div>

@@ -176,14 +176,20 @@ main.jsx
   * Genera 4 opciones aleatorias por ronda, evaluando aciertos, racha actual y puntaje acumulado.
 
 ### 5. Árbol de componentes dinámico (`ArbolComponentes.jsx`)
+![Árbol de componentes](./public/img/capturas/arbol-componentes.png)
+
 * **Componente recursivo `NodoArbol`:** Muestra la arquitectura real del proyecto.
 * **Interacción colapsable:** Botones `+` / `−` para contraer y expandir ramas en tiempo real mediante estados locales independientes.
 
 ### 6. Bitácora de desarrollo (`Bitacora.jsx`)
+![Bitácora de desarrollo](./public/img/capturas/bitacora.png)
+
 * **Registro de procesos:** Acordeón interactivo categorizado por color según los bloques del juego (planificación, git, lógica, responsividad, navegación e IA).
 * **Pasos numerados:** Línea de tiempo visual que detalla los desafíos técnicos encontrados durante el desarrollo.
 
 ### 7. Declaración ante el banco - Contacto (`Contacto.jsx`)
+![Formulario de contacto](./public/img/capturas/contacto.png)
+
 - **Formulario temático:** Diseñado bajo la estética de una "Declaración de Bancarrota / Auditoría Financiera".
 - **Retroalimentación interactiva:** Envío con alerta decorativa inmersiva sin recarga de página (*Single Page Application*).
 
