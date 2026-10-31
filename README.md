@@ -2,10 +2,6 @@
 
 > **Aplicación web interactiva desarrollada en React** que transforma la identidad visual y la dinámica del clásico juego de mesa *Monopoly* en un ecosistema de presentación para desarrolladores web, recursos técnicos y herramientas de software.
 
-![Vista de la portada y tablero interactivo](./public/img/capturas/portada.png)
-
-*La portada presenta la identidad de Devopoly y permite interactuar con el tablero, las fichas, los dados y las cartas del equipo.*
-
 ---
 
 ## Tabla de Contenidos
