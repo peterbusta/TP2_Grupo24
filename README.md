@@ -2,6 +2,10 @@
 
 > **Aplicación web interactiva desarrollada en React** que transforma la identidad visual y la dinámica del clásico juego de mesa *Monopoly* en un ecosistema de presentación para desarrolladores web, recursos técnicos y herramientas de software.
 
+![Vista de la portada y tablero interactivo](./public/img/capturas/portada.png)
+
+*La portada presenta la identidad de Devopoly y permite interactuar con el tablero, las fichas, los dados y las cartas del equipo.*
+
 ---
 
 ## Tabla de Contenidos
@@ -42,7 +46,7 @@ La aplicación gamifica la experiencia del portafolio técnico grupal mediante l
 ## Enlaces del proyecto
 
 * **Repositorio oficial en GitHub:** [github.com/peterbusta/TP2_Grupo24](https://github.com/peterbusta/TP2_Grupo24)
-* **Despliegue en producción (Vercel):** *Pendiente de publicación*
+* **Despliegue en producción (Vercel):** [https://tp2-grupo24.vercel.app](https://tp2-grupo24.vercel.app/)
 
 ---
 
@@ -123,6 +127,8 @@ main.jsx
 ## Módulos y funcionalidades principales
 
 ### 1. Tablero interactivo y portada (`Tablero.jsx`)
+![Vista del tablero interactivo](./public/img/capturas/portada.png)
+
 * **Grilla isométrica 3D:** Representación gráfica del tablero de Monopoly con 20 casillas dispuestas en cuadrícula mediante CSS Grid.
 * **Simulación de dados:** Lógica JavaScript que genera dos números aleatorios (1-6), reproduce efectos de sonido de dados rodando y calcula el movimiento automático del peón por el perímetro.
 * **Fichas flotantes (peones):** Movimiento dinámico con transformaciones `translate3d` ajustadas según la casilla destino. Al hacer clic en un peón, redirige mediante `useNavigate` enviando el `state` al perfil de dicho integrante.
@@ -132,6 +138,20 @@ main.jsx
   * Opción para "Revelar el costo real" con animación de moneda.
 
 ### 2. Mesa de jugadores - perfiles (`Perfiles.jsx`)
+![Vista general de los perfiles](./public/img/capturas/perfiles.png)
+
+#### Perfil de Flavia
+![Perfil de Flavia](./public/img/capturas/perfil-flavia.png)
+
+#### Perfil de Brian
+![Perfil de Brian](./public/img/capturas/perfil-brian.png)
+
+#### Perfil de Ludmila
+![Perfil de Ludmila](./public/img/capturas/perfil-ludmila.png)
+
+#### Perfil de Pedro
+![Perfil de Pedro](./public/img/capturas/perfil-pedro.png)
+
 * **Selección de carta:** Presentación inicial de 4 cartas esparcidas en la mesa con el logo de la ficha asignada a cada participante.
 * **Visor panorámico / Carrusel:** Navegación fluida entre integrantes mediante flechas laterales sin salir del visor activo.
 * **Integración multimedia integrada:**
@@ -141,6 +161,8 @@ main.jsx
   * **Reacciones flotantes:** Animación de emojis (👍 / 👎) con trayectorias y escalas aleatorias mediante CSS Variables.
 
 ### 3. Mazo tecnológico y recursos (`MazoTecnologico.jsx` y `CartaRecurso.jsx`)
+![Mazo tecnológico](./public/img/capturas/mazo-tecnologico.png)
+
 * **Consumo de JSON local:** Carga asíncrona vía `fetch` del archivo `recursos.json` conteniendo 25 registros organizados en grupos temáticos.
 * **Buscador y filtrado dinámico:**
   * Búsqueda por coincidencia de texto ignorando acentos y mayúsculas (`normalize("NFD")`).
@@ -150,6 +172,8 @@ main.jsx
   * Muestra el título, subtítulo, renta simulada, uso técnico recomendado y nota al dorso.
 
 ### 4. Desafío del banquero - API Pública (`DesafioBanquero.jsx`)
+![Desafío del banquero](./public/img/capturas/desafio-banquero.png)
+
 * **Consumo de API externa:** Conexión con `https://countriesnow.space/api/v0.1/countries/flag/images` para extraer banderas de países en tiempo real.
 * **Manejo de estados de red:** Vistas diferenciadas para estado de Carga (Loader con dado barajando), error con botón de reintento, y respuesta procesada.
 * **Lógica de trivia:**
