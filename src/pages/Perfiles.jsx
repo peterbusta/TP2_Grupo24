@@ -42,6 +42,7 @@ const equipo = [
     color: '#1e3799',
     logo: '/img/perro.png',
     avatar: '/img/avatar-brian.png',
+    videoTransformacion: '/img/brian_transformacion.mp4',
     ubicacion: 'La Plata, Argentina',
     edad: 32,
     caracteristica: 'Refactoriza todo el tablero si saca doble.',
