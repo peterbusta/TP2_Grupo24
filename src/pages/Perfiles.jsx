@@ -288,7 +288,7 @@ function Perfiles() {
             
             <div className="columna-video">
               {jugadorActivo.videoTransformacion ? (
-                <video className="video-vertical" autoPlay playsInline>
+                <video key={jugadorActivo.nombre} className="video-vertical" autoPlay playsInline>
                   <source src={jugadorActivo.videoTransformacion} type="video/mp4" />
                 </video>
               ) : (
