@@ -96,7 +96,7 @@ function MazoTecnologico() {
 
   if (cargando) {
     return (
-      <div className="layout-devopoly w-100 d-flex justify-content-center align-items-center">
+      <div className="layout-devopoly d-flex flex-column align-items-center pt-4">
         <section className="mazo-estado" aria-live="polite">
           <span className="mazo-dado" aria-hidden="true">⚄</span>
           <h2>Barajando el mazo...</h2>
@@ -108,7 +108,7 @@ function MazoTecnologico() {
 
   if (error) {
     return (
-      <div className="layout-devopoly w-100 d-flex justify-content-center align-items-center">
+      <div className="layout-devopoly d-flex flex-column align-items-center pt-4">
         <section className="mazo-estado mazo-error" role="alert">
           <h2>¡Vaya a la cárcel!</h2>
           <p>{error}</p>
@@ -119,20 +119,27 @@ function MazoTecnologico() {
   }
 
   return (
-    <div className="layout-devopoly w-100 h-100 overflow-auto">
-      <section className="mazo-tecnologico">
-        <header className="mazo-encabezado">
+    // Se elimina el "h-100 overflow-auto" que estaba rompiendo el scroll global y el fondo
+    <div className="layout-devopoly d-flex flex-column align-items-center pt-4">
+      <section className="mazo-tecnologico w-100" style={{ maxWidth: '1200px' }}>
+        <header className="mazo-encabezado mb-5 d-flex flex-column flex-md-row align-items-center justify-content-center gap-4 gap-md-5 w-100">
+          
           <div className="mazo-pila" aria-hidden="true">
             <span />
             <span />
             <span>
-              <img src="/img/logo.png" alt="" />
+              <img src="/img/logo.png" alt="Devopoly" />
             </span>
           </div>
-          <div className="mazo-encabezado-texto">
-            <p className="mazo-sello text-uppercase">ARCA COMUNAL · ARCHIVO DEL EQUIPO</p>
-            <h1 className="titulo-neon font-oswald text-uppercase m-0">Mazo Tecnológico</h1>
-            <p className="mazo-bajada text-secondary">
+          
+          <div className="mazo-encabezado-texto text-center">
+            <h6 className="text-warning fw-bold text-uppercase mb-2" style={{ letterSpacing: '2px', fontSize: '0.85rem' }}>
+              ARCA COMUNAL · ARCHIVO DEL EQUIPO
+            </h6>
+            <h1 className="titulo-neon font-oswald text-uppercase text-white m-0 mb-3">
+              MAZO TECNOLÓGICO
+            </h1>
+            <p className="portada-bajada text-secondary mb-0 mt-3" style={{ maxWidth: '800px', margin: '0 auto', lineHeight: '1.6' }}>
               Las herramientas, los conceptos y los recursos con los que construimos Devopoly.
               Cada color es un grupo temático inspirado en el tablero: elegí uno para filtrar o
               girá una carta para leer su dorso.

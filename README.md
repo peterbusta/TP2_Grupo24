@@ -164,8 +164,8 @@ main.jsx
 * **Pasos numerados:** Línea de tiempo visual que detalla los desafíos técnicos encontrados durante el desarrollo.
 
 ### 7. Declaración ante el banco - Contacto (`Contacto.jsx`)
-* **Formulario temático:** Diseñado bajo la estética de un "Acta Policial / Banco de Devopoly".
-* **Retroalimentación interactiva:** Envío con alerta decorativa sin recarga de página (*Single Page Application*).
+- **Formulario temático:** Diseñado bajo la estética de una "Declaración de Bancarrota / Auditoría Financiera".
+- **Retroalimentación interactiva:** Envío con alerta decorativa inmersiva sin recarga de página (*Single Page Application*).
 
 ---
 
@@ -244,24 +244,21 @@ El diseño sigue una paleta en tono oscuro (*Dark Theme*) inspirada en neón y t
 
 ## 🤖 Uso directo de inteligencia artificial
 
-El equipo integró herramientas de Inteligencia Artificial como **asistentes técnicos y creativos** en distintas etapas del desarrollo, manteniendo siempre la auditoría y reescritura humana de los resultados:
+El equipo integró herramientas de Inteligencia Artificial de última generación como soporte técnico y creativo, validando rigurosamente cada solución. Todos los integrantes utilizaron **Meta AI** para la generación y animación en video de sus respectivos avatares.
 
-* **ChatGPT:**
-  * Generación y homogeneización de prompts para los avatares estilo 3D de cada integrante.
-  * Adaptación visual de logotipos e íconos.
-* **Gemini (3 Flash / Pro):**
-  * Asistencia técnica en la migración de arquitectura HTML/JS estática a React 18.
-  * Estructuración del árbol de componentes y depuración de rutas con `react-router-dom`.
-* **Claude:**
-  * Refinamiento de estilos CSS avanzados (transformaciones 3D e isométricas).
-  * Optimización de animaciones para la rotación de cartas y emojis reactivos.
+**Detalle de uso por integrante:**
+- **Flavia Berzuini (GPT-5.6 Luna & Gemini 3.8 Flash / 4 Argon):** Creación de logos y favicon con GPT-5.6 Luna. Optimización de responsividad (`clamp()`), rediseño del formulario "Declaración de Bancarrota" y unificación visual asistida por Gemini.
+- **Brian Sabio (Claude Sonnet 5.5):** Asistencia en la lógica asíncrona de la API de banderas (CountriesNow), estados de carga/error en el "Desafío del Banquero" y revisión del estado global.
+- **Ludmila Quiroz (GPT-5.6 Luna):** Soporte en la redacción técnica del README, estructuración de datos en los archivos JSON locales y organización narrativa de la bitácora.
+- **Pedro Bustamante (Gemini 4 Argon & Canva):** Paleta de colores, post-producción gráfica de avatares 3D y soporte técnico avanzado para depuración de rutas de imágenes en el carrusel de Perfiles.
 
 ---
 
 ## Contexto académico
 
-* **Materia:** Desarrollo de Sistemas Web · Front End
-* **Institución:** Universidad / Instituto de Formación Técnica
-* **Trabajo Práctico:** Trabajo Práctico Grupal Nº 2 (TP2)
-* **Cuatrimestre:** 2º Cuatrimestre de 2026
-* **Grupo:** Grupo N° 24
+- **Materia:** Desarrollo de Sistemas Web · Front End
+- **Institución:** IFTS 29
+- **Carrera:** Tecnicatura Superior en Desarrollo de Software
+- **Trabajo Práctico:** Trabajo Práctico Grupal Nº 2 (TP2)
+- **Cuatrimestre:** 2º Cuatrimestre de 2026
+- **Grupo:** Grupo N° 24

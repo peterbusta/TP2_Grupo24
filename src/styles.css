@@ -1579,19 +1579,27 @@ body:has(.vista-cinematica) {
 
   .casilla-3d .contenido-casilla {
     padding: clamp(1px, .5cqw, 4px);
+    overflow: hidden;
+    width: 100%;
   }
 
   .nombre-casilla {
-    font-size: clamp(9px, 2.4cqw, 10.4px);
-    line-height: 1.05;
+    font-size: clamp(6.5px, 2cqw, 10.4px);
+    line-height: 1.1;
+    width: 100%;
+    word-break: break-word; 
+    overflow-wrap: break-word;
   }
 
   .icono-casilla {
-    width: clamp(22px, 6.5cqw, 45px);
+    width: clamp(18px, 5.5cqw, 45px);
+    max-height: 50%;
+    object-fit: contain;
   }
 
   .casilla-3d.esquina .icono-casilla {
-    width: clamp(26px, 8.5cqw, 60px);
+    width: clamp(22px, 7.5cqw, 60px);
+    max-height: 55%;
   }
 
   .centro-tablero .logo-devopoly-img {
@@ -1624,9 +1632,10 @@ body:has(.vista-cinematica) {
   .mazo-capa-uno { left: 4.2%; top: 5.7%; }
 
   .mazo-frontal img {
-    top: 4%;
-    width: 41%;
-    height: auto;
+    top: clamp(2px, 1cqw, 4px);
+    width: clamp(18px, 5cqw, 43px);
+    height: clamp(18px, 5cqw, 43px);
+    object-fit: contain;
   }
 
   .mazo-etiqueta {
@@ -1781,4 +1790,40 @@ body:has(.vista-cinematica) {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* BOTONES DEL BANQUERO */
+.btn-opcion-banquero {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid #5c6670;
+  color: #aeb5be;
+  padding: 12px;
+  border-radius: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  width: 100%;
+}
+
+.btn-opcion-banquero:not(:disabled):hover {
+  background: color-mix(in srgb, #f39c12 12%, rgba(26, 33, 42, 1));
+  border-color: #f39c12;
+  color: #fff;
+  transform: translateX(6px);
+  box-shadow: 0 5px 15px color-mix(in srgb, #f39c12 35%, transparent);
+}
+
+.btn-opcion-banquero.btn-correcta {
+  background: rgba(46, 204, 113, 0.2) !important;
+  border-color: #2ecc71 !important;
+  color: #2ecc71 !important;
+  box-shadow: 0 0 15px rgba(46, 204, 113, 0.3) !important;
+}
+
+.btn-opcion-banquero.btn-incorrecta {
+  background: rgba(192, 57, 43, 0.1) !important;
+  border-color: #c0392b !important;
+  color: #c0392b !important;
+  opacity: 0.5;
 }

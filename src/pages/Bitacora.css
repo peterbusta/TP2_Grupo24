@@ -3,44 +3,36 @@
   gap: 28px;
 }
 
-.bitacora-encabezado {
-  width: 100%;
-  max-width: 760px;
-}
-
-.bitacora-logo {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 12px;
-}
-
-.bitacora-logo img {
-  width: 92px;
-  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.45));
-}
-
-.bitacora-subtitulo {
-  margin: 12px 0 0;
-  color: #aeb5be;
-  font-size: 0.9rem;
-  font-weight: 500;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-}
-
+/* Contenedor general que agrupa los paneles */
 .bitacora-lista {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  max-width: 920px;
-  gap: 14px;
+  max-width: 900px;
+  gap: 16px;
+  background-color: rgba(22, 27, 34, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
 }
 
+/* Paneles individuales */
 .bitacora-entrada {
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--color-bitacora) 55%, #263442);
   border-radius: 10px;
   background: rgba(11, 17, 24, 0.82);
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  /* Usamos la misma curva de animación fluida del árbol */
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.bitacora-entrada:hover {
+  background-color: color-mix(in srgb, var(--color-bitacora) 12%, rgba(26, 33, 42, 1));
+  border-color: var(--color-bitacora);
+  /* Desplazamiento lateral y brillo inyectado con el color dinámico */
+  transform: translateX(6px);
+  box-shadow: 0 5px 15px color-mix(in srgb, var(--color-bitacora) 35%, transparent);
 }
 
 .bitacora-titulo {
@@ -96,13 +88,25 @@
   padding: 20px 24px;
   border-top: 1px solid color-mix(in srgb, var(--color-bitacora) 35%, transparent);
   background: rgba(22, 27, 34, 0.72);
-  color: #d1d5db;
-  font-family: "Roboto", sans-serif;
-  line-height: 1.6;
 }
 
-.bitacora-contenido p {
+/* --- Tipografía justificada unificada --- */
+.bitacora-parrafo,
+.detalle-paso p,
+.opcion-carta p {
+  font-family: "Montserrat", sans-serif;
+  color: #aeb5be;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  text-align: justify;
   margin-bottom: 1rem;
+}
+
+.bitacora-parrafo strong,
+.opcion-carta p strong,
+.detalle-paso p strong {
+  color: #f39c12;
+  font-weight: 600;
 }
 
 .bitacora-vacia {
@@ -112,7 +116,6 @@
   font-style: italic;
 }
 
-/* --- Estilos para los pasos numerados y contenidos internos --- */
 .paso-turno {
   display: flex;
   gap: 1rem;
@@ -131,45 +134,53 @@
 .numero-amarillo { color: #f1c40f; }
 
 .detalle-paso h3 {
+  font-family: "Oswald", sans-serif;
   font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   color: #fff;
-  margin: 0 0 0.3rem 0;
+  margin: 0 0 0.4rem 0;
 }
 
-.detalle-paso p {
-  margin: 0;
-  color: #9ca3af;
-}
-
-/* --- Tarjetas de opciones internas (ej. Uso de IA) --- */
 .opcion-carta {
   background: rgba(15, 23, 42, 0.6);
   border-left: 3px solid var(--color-bitacora);
-  padding: 1rem;
+  padding: 1.2rem;
   margin: 1rem 0;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 .encabezado-opcion {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
 }
 
 .badge-opcion {
   background: var(--color-bitacora);
   color: #000;
+  font-family: "Oswald", sans-serif;
   font-weight: bold;
-  padding: 2px 8px;
+  padding: 2px 10px;
   border-radius: 4px;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 
 .encabezado-opcion h4 {
   margin: 0;
   color: #fff;
-  font-size: 1rem;
+  font-family: "Oswald", sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+  .bitacora-lista {
+    padding: 1rem;
+    border: none;
+    background-color: transparent;
+  }
 }
 
 @media (max-width: 576px) {

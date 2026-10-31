@@ -73,9 +73,15 @@ function NodoArbol({ nodo, nivel = 0 }) {
   const [abierto, setAbierto] = useState(true);
   const tieneHijos = nodo.hijos?.length > 0;
 
+  const coloresPropiedades = [
+    "#f39c12", "#3498db", "#da70d6", "#f1c40f", 
+    "#e74c3c", "#2ecc71", "#00a8ff", "#9b59b6"
+  ];
+  const colorNodo = coloresPropiedades[nivel % coloresPropiedades.length];
+
   return (
-    <li className="arbol-nodo">
-      <div className="arbol-nodo-contenido" style={{ "--nivel": nivel }}>
+    <li className="arbol-nodo" style={{ "--nodo-color": colorNodo }}>
+      <div className="arbol-nodo-contenido">
         {tieneHijos ? (
           <button
             type="button"
@@ -108,19 +114,22 @@ function NodoArbol({ nodo, nivel = 0 }) {
 
 function ArbolComponentes() {
   return (
-    <section className="arbol-componentes layout-devopoly">
-      <header className="arbol-encabezado text-center">
-        <p className="portada-sello mb-2">ARQUITECTURA DEVOPOLY</p>
-        <h1 className="titulo-neon font-oswald text-uppercase m-0">
-          Árbol de componentes
+    <section className="arbol-componentes layout-devopoly d-flex flex-column align-items-center pt-4">
+      <header className="header-tablero text-center mb-5 w-100">
+        <h6 className="text-warning fw-bold text-uppercase mb-2" style={{ letterSpacing: '2px', fontSize: '0.85rem' }}>
+          ARQUITECTURA DEVOPOLY
+        </h6>
+        
+        <h1 className="titulo-neon font-oswald text-uppercase text-white m-0 mb-3">
+          ÁRBOL DE COMPONENTES
         </h1>
-        <p className="text-secondary mt-3 mb-0">
-          La jerarquía muestra cómo se compone la aplicación y qué componentes
-          participan en cada sección.
+        
+        <p className="portada-bajada text-secondary mb-0 mt-3" style={{ maxWidth: '800px', margin: '0 auto', lineHeight: '1.6' }}>
+          Consultá los planos de construcción de la ciudad. Esta jerarquía visual revela cómo se estructuran las propiedades, los servicios y la lógica detrás de cada movimiento en nuestro tablero de React.
         </p>
       </header>
 
-      <div className="arbol-panel" aria-label="Árbol de componentes de Devopoly">
+      <div className="arbol-panel w-100" aria-label="Árbol de componentes de Devopoly" style={{ maxWidth: '900px' }}>
         <ul className="arbol-lista arbol-raiz">
           <NodoArbol nodo={arbol} />
         </ul>

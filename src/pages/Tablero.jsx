@@ -336,15 +336,15 @@ function Tablero() {
   return (
     <div className="layout-devopoly">
 
-      <div className="header-tablero text-center mb-3 w-100">
-        <p className="portada-sello mb-2">GRUPO 24 · FRONT END</p>
-        <h1 className="titulo-neon font-oswald text-uppercase m-0">¡Bienvenidos a Devopoly!</h1>
-        <p className="portada-bajada text-secondary mb-0" style={{ maxWidth: '900px', margin: '0 auto' }}>
+      <div className="header-tablero text-center mb-5 w-100">
+        <p className="portada-sello mb-3">GRUPO 24 · FRONT END</p>
+        <h1 className="titulo-neon font-oswald text-uppercase mb-4  mt-0">¡Bienvenidos a Devopoly!</h1>
+        <p className="portada-bajada text-secondary mb-3" style={{ maxWidth: '900px', margin: '0 auto', lineHeight: '1.6' }}>
           Somos cuatro estudiantes de la Tecnicatura en Desarrollo de Software. Convertimos el
           Monopoly en una app React: cada propiedad es una tecnología, cada carta una excusa para
           aprender algo nuevo. Tirá los dados, abrí las fichas y entrá a los perfiles del equipo.
         </p>
-        <p className="portada-lema fst-italic mb-0">Donde los bugs pagan alquiler y el código limpio gana la partida.</p>
+        <p className="portada-lema fst-italic mb-0 mt-3">Donde los bugs pagan alquiler y el código limpio gana la partida.</p>
       </div>
 
       <div className="fila-portada d-flex w-100 flex-column flex-xl-row justify-content-between align-items-center gap-4">
@@ -404,15 +404,17 @@ function Tablero() {
                 const isSalida = peon.pos === 0;
                 const isActiva = peon.pos === posicionActual && !isSalida;
                 
+                // Usamos multiplicadores (1 y -1) en lugar de píxeles fijos
                 const offsets = [
-                  { x: -35, y: -35 },
-                  { x: 35, y: -35 },
-                  { x: -35, y: 35 },
-                  { x: 35, y: 35 }
+                  { x: -1, y: -1 },
+                  { x: 1, y: -1 },
+                  { x: -1, y: 1 },
+                  { x: 1, y: 1 }
                 ];
 
-                const offsetX = isSalida ? offsets[i].x : 0;
-                const offsetY = isSalida ? offsets[i].y : 0;
+                // El valor bajará de 35px a 8px según el tamaño de pantalla
+                const offsetX = isSalida ? `calc(${offsets[i].x} * clamp(8px, 2.5vw, 35px))` : '0px';
+                const offsetY = isSalida ? `calc(${offsets[i].y} * clamp(8px, 2.5vw, 35px))` : '0px';
                 const elevacionZ = isActiva ? 70 : 45;
 
                 return (
@@ -422,7 +424,8 @@ function Tablero() {
                     style={{
                       gridColumn: casilla.col,
                       gridRow: casilla.row,
-                      transform: `translate(${offsetX}px, ${offsetY}px) translateZ(${elevacionZ}px) rotateZ(var(--giro-peon, 45deg)) rotateX(var(--inclinacion-peon, -50deg))`,
+                      // Actualizamos el transform para usar las nuevas variables dinámicas
+                      transform: `translate(${offsetX}, ${offsetY}) translateZ(${elevacionZ}px) rotateZ(var(--giro-peon, 45deg)) rotateX(var(--inclinacion-peon, -50deg))`,
                       zIndex: 100 + i,
                       '--color-peon': peon.color
                     }}

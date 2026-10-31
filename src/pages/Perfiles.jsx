@@ -240,11 +240,20 @@ function Perfiles() {
 
   return (
     <div className="container-fluid pt-3 pb-5 relative">
-      <div className="header-tablero text-center mb-5 w-100">
-        <h2 className="titulo-neon font-oswald text-uppercase text-white m-0">Mesa de Jugadores</h2>
-        <p className="text-secondary">Elegí una carta para revelar a su desarrollador</p>
-      </div>
-      
+  <div className="header-tablero text-center mb-5 w-100">
+    <h6 className="text-warning fw-bold text-uppercase mb-2" style={{ letterSpacing: '2px', fontSize: '0.85rem' }}>
+      NUESTRO EQUIPO
+    </h6>
+    
+    <h1 className="titulo-neon font-oswald text-uppercase text-white m-0 mb-3">
+      MESA DE JUGADORES
+    </h1>
+    
+    <p className="portada-bajada text-secondary mb-0 mt-3" style={{ maxWidth: '800px', margin: '0 auto', lineHeight: '1.6' }}>
+      Elegí una carta para revelar a su desarrollador. Conocé a los dueños de las propiedades, los magnates del código limpio y los responsables de que el proyecto no caiga en la bancarrota.
+    </p>
+  </div>
+  
       {!jugadorActivo && (
         <div className="mesa-cartas mt-4">
           {equipo.map(jugador => (
